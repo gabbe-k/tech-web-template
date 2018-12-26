@@ -1,0 +1,16 @@
+@import "misc";
+@import "header";
+@import "footer";
+@import "main";
+
+.content-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  width: 100%;
+  background: $two;
+}
+
+.content-wrap div {
+  
+}
