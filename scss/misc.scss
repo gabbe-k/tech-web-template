@@ -1,10 +1,17 @@
 //colors
-$one : #FFFFFF;
-$two : #F2F2F2;
-$three : #aaaaaa;
-$four : #7f7f7f;
-$five : #5b5b5b;
-$six : #2b2b2b;
+$Text : #e0e0e0;
+$PrimText : #212121;
+$SecText : #757575;
+$TextDark : #d6d6d6;
+
+$Divider : #BDBDBD;
+
+$Prim : #3F51B5;
+$PrimLight : #C5CAE9;
+$PrimDark : #303F9F;
+
+$Accent : #ba1a52;
+//$Header : #0277bd;
 
 //mixins
 @mixin fadein($time, $opacity) {
@@ -77,23 +84,31 @@ $six : #2b2b2b;
 }
 
 h1 {
-  color: $one;
+  color: $Text;
   font-size: 4rem;
 }
 
 h2 {
-  color: $one;
+  color: $Text;
   font-size: 1rem;
 }
 
 h3 {
-  color: $six;
+  color: $PrimText;
   font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h5 {
+  color: $SecText;
+  font-size: 0.75rem;
+  font-weight: 100;
 }
 
 p {
   font-size: 0.8rem;
   font-weight: bolder;
-  color: white;
+  color: $SecText;
   text-align: center;
+  font-weight: 100;
 }

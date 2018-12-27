@@ -13,15 +13,6 @@
       <div class="header-wrap">
         <div class="header-inner-wrap">
 
-          <div class="header-nav">
-            <div id="Logo">
-              LOGO
-            </div>
-            <div class="active">Home</div>
-            <div>Post</div>
-            <div>Ask</div>
-          </div>
-
           <div class="header-info">
             <div class="header-info-title">
               <h1>Hello</h1>
@@ -29,6 +20,15 @@
             <div class="header-info-hub">
               <button type="button" name="button" id="dropBtn">Get Started...</button>
             </div>
+          </div>
+
+          <div class="header-nav">
+            <div id="Logo">
+              LOGO
+            </div>
+            <div class="active">Home</div>
+            <div>Post</div>
+            <div>Ask</div>
           </div>
 
         </div>
