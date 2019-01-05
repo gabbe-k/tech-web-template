@@ -101,12 +101,15 @@
   $('.header-info-hub').fadeOut(500);
   $('#dropBtn').fadeOut(500);
 
-  $(window).scroll(function() {
+  $(document).on('scroll', function() {
+
+    $(document).off('scroll');
     $('.header-info').removeClass('header-info-fullsize');
     $('.header-info-title').fadeIn(500);
     $('.header-info-hub').fadeIn(500);
     $('#dropBtn').fadeIn(500);
     $('.header-info').removeClass('.animatable--now');
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   });
 
 });
