@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Thasadith" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Index</title>
   </head>
 
@@ -16,7 +17,7 @@
 
           <div class="header-info">
             <div class="header-info-title">
-              <h1>Hello</h1>
+              <h1>New here?</h1>
             </div>
             <div class="header-info-hub">
               <button type="button" name="button" id="dropBtn">Get Started...</button>
@@ -87,3 +88,27 @@
   </body>
 
 </html>
+
+<script type="text/javascript">
+
+  //$("html, body").animate({ scrollTop: 0 }, "slow");
+
+  $('#dropBtn').click(function(event) {
+
+  $('.header-info').addClass('.animatable--now');
+  $('.header-info').addClass('header-info-fullsize');
+  $('.header-info-title').fadeOut(500);
+  $('.header-info-hub').fadeOut(500);
+  $('#dropBtn').fadeOut(500);
+
+  $(window).scroll(function() {
+    $('.header-info').removeClass('header-info-fullsize');
+    $('.header-info-title').fadeIn(500);
+    $('.header-info-hub').fadeIn(500);
+    $('#dropBtn').fadeIn(500);
+    $('.header-info').removeClass('.animatable--now');
+  });
+
+});
+
+</script>

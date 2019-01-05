@@ -48,12 +48,9 @@
     -webkit-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
     -moz-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
     box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
-    transition: height 1s 1s;
-    /*height: 10rem;
+    height: 10rem;
+    transition: height 0.5s ease;
 
-    &:hover {
-      height: 100vh;
-    } */
 
     .header-info-title {
       display: flex;
@@ -75,10 +72,10 @@
           font-size: 0.8rem;
           border-radius: 0.1rem;
           border-bottom-right-radius: 0.5rem;
+          margin-top: 0rem;
 
           &:active  {
             box-shadow: none !important;
-            margin-top: 0 !important;
             transform: translateY(0.1rem);
           }
 
@@ -90,4 +87,9 @@
 
   height: 100%;
   width: 100%;
+}
+
+.header-info-fullsize {
+  -webkit-transition: 0.5s ease;
+  height: 100vh !important;
 }

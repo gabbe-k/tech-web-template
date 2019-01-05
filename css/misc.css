@@ -74,4 +74,8 @@ html {
   }
 }
 
+.animatable--now {
+  transition: all 200ms ease-out;
+}
+
 /*# sourceMappingURL=misc.css.map */

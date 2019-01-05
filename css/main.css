@@ -74,6 +74,10 @@ html {
   }
 }
 
+.animatable--now {
+  transition: all 200ms ease-out;
+}
+
 .main-wrap {
   display: grid;
   grid-template-columns: 1fr;

@@ -74,6 +74,10 @@ html {
   }
 }
 
+.animatable--now {
+  transition: all 200ms ease-out;
+}
+
 .footer-wrap {
   background: #0c0c0c;
   height: 10rem;

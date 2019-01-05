@@ -38,7 +38,7 @@ $Accent : #ba1a52;
   outline: none;
   border: none;
   transition: margin-top 0.05s ease-out;
-  transition: 0.05s ease-out;
+  transition: 0.075s .05s ease-out;
   box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.2);
 
   &:focus {
@@ -142,4 +142,8 @@ html {
   @media screen and (min-width: 1200px) {
     font-size: 22px;
   }
+}
+
+.animatable--now {
+  transition: all 200ms ease-out;
 }
