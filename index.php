@@ -109,7 +109,7 @@
     $('.header-info-hub').fadeIn(500);
     $('#dropBtn').fadeIn(500);
     $('.header-info').removeClass('.animatable--now');
-    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $("html, body").animate({ scrollTop: 0 });
   });
 
 });
