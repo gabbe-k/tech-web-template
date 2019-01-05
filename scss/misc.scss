@@ -1,14 +1,18 @@
 //colors
-$Text : #e0e0e0;
+$Text : #EDEDED;
 $PrimText : #212121;
 $SecText : #757575;
 $TextDark : #d6d6d6;
+$TextDarker : #d8d8d8;
 
-$Divider : #BDBDBD;
+$Divider : #ebebeb;
 
 $Prim : #3F51B5;
 $PrimLight : #C5CAE9;
 $PrimDark : #303F9F;
+$SecDark : #101638;
+$ThirdDark : #111111;
+$Darkest : #0c0c0c;
 
 $Accent : #ba1a52;
 //$Header : #0277bd;
@@ -18,6 +22,14 @@ $Accent : #ba1a52;
     opacity: $opacity;
   -webkit-transition: $time;
     &:hover {opacity: 0.8};
+}
+
+//maybe nice ide guy
+@mixin border() {
+  border-radius: 0rem;
+  border-width: .05rem;
+  border-color: $Divider;
+  border-style: none;
 }
 
 @mixin buttonMix() {
@@ -58,7 +70,9 @@ $Accent : #ba1a52;
 
 * {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Thasadith', sans-serif;
+  font-weight: bold;
+  //font-family: 'Roboto', sans-serif;
   padding: 0;
 }
 
@@ -85,7 +99,8 @@ $Accent : #ba1a52;
 
 h1 {
   color: $Text;
-  font-size: 4rem;
+  font-size: 6rem;
+  font-weight: 900;
 }
 
 h2 {
@@ -94,15 +109,19 @@ h2 {
 }
 
 h3 {
-  color: $PrimText;
+  color: $TextDarker;
   font-size: 1.5rem;
   font-weight: 100;
 }
 
+h4{
+  color: $Text;
+  font-size: 1rem;
+}
+
 h5 {
   color: $SecText;
-  font-size: 0.75rem;
-  font-weight: 100;
+  font-size: .8rem;
 }
 
 p {
@@ -111,4 +130,16 @@ p {
   color: $SecText;
   text-align: center;
   font-weight: 100;
+}
+
+html {
+  font-size: 16px;
+
+  @media screen and (min-width: 900px) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 22px;
+  }
 }

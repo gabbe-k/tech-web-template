@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Thasadith", sans-serif;
+  font-weight: bold;
   padding: 0;
 }
 
@@ -25,25 +26,30 @@
 }
 
 h1 {
-  color: #e0e0e0;
-  font-size: 4rem;
+  color: #EDEDED;
+  font-size: 6rem;
+  font-weight: 900;
 }
 
 h2 {
-  color: #e0e0e0;
+  color: #EDEDED;
   font-size: 1rem;
 }
 
 h3 {
-  color: #212121;
+  color: #d8d8d8;
   font-size: 1.5rem;
   font-weight: 100;
 }
 
+h4 {
+  color: #EDEDED;
+  font-size: 1rem;
+}
+
 h5 {
   color: #757575;
-  font-size: 0.75rem;
-  font-weight: 100;
+  font-size: 0.8rem;
 }
 
 p {
@@ -54,25 +60,47 @@ p {
   font-weight: 100;
 }
 
+html {
+  font-size: 16px;
+}
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 22px;
+  }
+}
+
 .main-wrap {
-  background: #d6d6d6;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.05fr 1fr;
+  background: #111111;
   height: 40rem;
-  padding: 0.75rem;
+  padding: 1rem;
 }
 
 .main-inner-wrap {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 0.75fr 12fr;
-  grid-column-gap: 0.75rem;
+  grid-column-gap: 1rem;
   width: 100%;
   height: 100%;
 }
-.main-inner-wrap div {
-  background: #e0e0e0;
-  -webkit-box-shadow: 0px 0px 18px 6px #bdbdbd;
-  -moz-box-shadow: 0px 0px 18px 6px #bdbdbd;
-  box-shadow: 0px 0px 18px 6px #bdbdbd;
+.main-inner-wrap div:not(.postlist-left-text):not(.postlist-center-text) {
+  border-radius: 0rem;
+  border-width: 0.05rem;
+  border-color: #ebebeb;
+  border-style: none;
+  background: #0c0c0c;
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.9);
+  padding: 1rem;
 }
 
 .postlist-left-text {
@@ -86,6 +114,12 @@ p {
 
 .postlist-left {
   grid-column: 1/2;
+  /*& div:last-child {
+    border-bottom-radius: .25rem !important;
+    border-bottom-width: .1rem !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: $Divider !important;
+  }*/
 }
 
 .postlist-center-text {
@@ -99,6 +133,21 @@ p {
 
 .postlist-center {
   grid-column: 2/6;
+  /*& div:last-child {
+    border-bottom-radius: .25rem !important;
+    border-bottom-width: .1rem !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: $Divider !important;
+  }*/
+}
+
+.postlink {
+  background: #101638 !important;
+  -webkit-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.6) !important;
+  -moz-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.6) !important;
+  border-bottom: none !important;
+  margin-bottom: 0.3rem;
 }
 
 /*# sourceMappingURL=main.css.map */

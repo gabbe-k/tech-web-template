@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Thasadith", sans-serif;
+  font-weight: bold;
   padding: 0;
 }
 
@@ -25,25 +26,30 @@
 }
 
 h1 {
-  color: #e0e0e0;
-  font-size: 4rem;
+  color: #EDEDED;
+  font-size: 6rem;
+  font-weight: 900;
 }
 
 h2 {
-  color: #e0e0e0;
+  color: #EDEDED;
   font-size: 1rem;
 }
 
 h3 {
-  color: #212121;
+  color: #d8d8d8;
   font-size: 1.5rem;
   font-weight: 100;
 }
 
+h4 {
+  color: #EDEDED;
+  font-size: 1rem;
+}
+
 h5 {
   color: #757575;
-  font-size: 0.75rem;
-  font-weight: 100;
+  font-size: 0.8rem;
 }
 
 p {
@@ -54,11 +60,26 @@ p {
   font-weight: 100;
 }
 
+html {
+  font-size: 16px;
+}
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 22px;
+  }
+}
+
 .header-wrap {
-  z-index: 999;
+  z-index: 998;
 }
 
 .header-inner-wrap {
+  z-index: 999;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.2fr;
@@ -69,35 +90,40 @@ p {
 .header-inner-wrap .header-nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 16fr;
-  -webkit-box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.6);
-  box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.6);
-  background: #303F9F;
-  border-bottom-right-radius: 1.5rem;
+  background: #101638;
+  -webkit-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
   z-index: 999;
 }
 .header-inner-wrap .header-nav div {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.1s 0s;
-  color: #e0e0e0;
+  transition: 0.05s 0s ease-out;
+  color: #EDEDED;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #101638;
 }
 .header-inner-wrap .header-nav div:hover {
-  -webkit-box-shadow: inset 0px -4px 0px 0px #ba1a52;
-  -moz-box-shadow: inset 0px -4px 0px 0px #ba1a52;
-  box-shadow: inset 0px -4px 0px 0px #ba1a52;
+  -webkit-box-shadow: inset 0px -0.25rem 0px 0px #ba1a52;
+  -moz-box-shadow: inset 0px -0.25rem 0px 0px #ba1a52;
+  box-shadow: inset 0px -0.25rem 0px 0px #ba1a52;
 }
 .header-inner-wrap .header-info {
   padding: 2rem;
-  background: #3F51B5;
-  -webkit-box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 0px 300px 35px rgba(0, 0, 0, 0.75);
+  background: #303F9F;
+  -webkit-box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
+  box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
   transition: height 1s 1s;
-}
-.header-inner-wrap .header-info:hover {
-  height: 100vh;
+  /*height: 10rem;
+  
+      &:hover {
+        height: 100vh;
+      } */
 }
 .header-inner-wrap .header-info .header-info-title {
   display: flex;
@@ -119,7 +145,7 @@ p {
   box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
   box-shadow: 0 0.15rem 0 0rem rgba(0, 0, 0, 0.25);
   background-color: #ba1a52;
-  color: #e0e0e0;
+  color: #EDEDED;
   padding: 0.75rem 1rem 0.75rem 1rem;
   font-size: 0.8rem;
   border-radius: 0.1rem;

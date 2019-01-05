@@ -2,10 +2,11 @@
 
 .header-wrap {
   //box-shadow: 0 0.4rem 0 -.1rem rgba(0,0,0,.65);
-  z-index: 999;
+  z-index: 998;
 }
 
 .header-inner-wrap {
+  z-index: 999;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.2fr;
@@ -14,36 +15,39 @@
   .header-nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 16fr;
-    -webkit-box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.6);
-    -moz-box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.6);
-    box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.6);
+    background: $SecDark;
+    -webkit-box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.33);
+    box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.33);
 
-    background: $PrimDark;
-    border-bottom-right-radius: 1.5rem;
+      & div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.05s 0s ease-out;
+        color: $Text;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background: $SecDark;
 
-    & div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.1s 0s;
-      color: $Text;
+        &:hover {
+          -webkit-box-shadow: inset 0px -.25rem 0px 0px $Accent;
+          -moz-box-shadow: inset 0px -.25rem 0px 0px $Accent;
+          box-shadow: inset 0px -.25rem 0px 0px $Accent;
+        }
 
-      &:hover {
-        -webkit-box-shadow: inset 0px -4px 0px 0px rgba(186,26,82,1);
-        -moz-box-shadow: inset 0px -4px 0px 0px rgba(186,26,82,1);
-        box-shadow: inset 0px -4px 0px 0px rgba(186,26,82,1);
       }
-    }
 
     z-index: 999;
   }
 
   .header-info {
     padding: 2rem;
-    background: $Prim;
-    -webkit-box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 0px 300px 35px rgba(0,0,0,0.75);
+    background: $PrimDark;
+    -webkit-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
+    -moz-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
+    box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
     transition: height 1s 1s;
     /*height: 10rem;
 
@@ -57,10 +61,6 @@
       align-items: flex-end;
     }
 
-    .header-info-text {
-
-    }
-
     .header-info-hub {
       display: flex;
       justify-content: center;
@@ -69,7 +69,6 @@
         #dropBtn {
           @include buttonMix();
           box-shadow: 0 0.15rem 0 0rem rgba(0,0,0,.25);
-
           background-color: $Accent;
           color: $Text;
           padding: 0.75rem 1rem 0.75rem 1rem;

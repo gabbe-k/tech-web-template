@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Thasadith" rel="stylesheet">
     <title>Index</title>
   </head>
 
@@ -24,11 +25,17 @@
 
           <div class="header-nav">
             <div id="Logo">
-              LOGO
+                HOME
             </div>
-            <div class="active">Home</div>
-            <div>Post</div>
-            <div>Ask</div>
+            <div class="active">
+                active
+            </div>
+            <div>
+                active
+            </div>
+            <div>
+                active
+            </div>
           </div>
 
         </div>
@@ -49,10 +56,23 @@
             <h3>Recent</h3>
           </div>
           <div class="postlist-left">
-
+            <div class="postlink">
+              <h4>woah gammers just got this message...</h4>
+            </div>
+            <div class="postlink">
+              <h4>woah gammers just got this message...</h4>
+            </div>
+            <div class="postlink">
+              <h4>woah gammers just got this message...</h4>
+            </div>
           </div>
           <div class="postlist-center">
-
+            <div class="postlink">
+              <h4>woah gammers just got this message...</h4>
+            </div>
+            <div class="postlink">
+              <h4>woah gammers just got this message...</h4>
+            </div>
           </div>
         </div>
       </div>
