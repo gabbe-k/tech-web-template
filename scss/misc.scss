@@ -24,6 +24,14 @@ $Accent : #ba1a52;
     &:hover {opacity: 0.8};
 }
 
+@mixin underline() {
+  -webkit-text-underline-position: under;
+  -ms-text-underline-position: below;
+  text-underline-position: under;
+  text-decoration: underline !important;
+  text-decoration-color: $Accent !important;
+}
+
 //maybe nice ide guy
 @mixin border() {
   border-radius: 0rem;

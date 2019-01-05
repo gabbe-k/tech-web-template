@@ -92,6 +92,7 @@ html {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 0.75fr 12fr;
   grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
   width: 100%;
   height: 100%;
 }
@@ -115,6 +116,13 @@ html {
   display: flex;
   align-items: center;
 }
+.postlist-left-text h3 {
+  -webkit-text-underline-position: under;
+  -ms-text-underline-position: below;
+  text-underline-position: under;
+  text-decoration: underline !important;
+  text-decoration-color: #ba1a52 !important;
+}
 
 .postlist-left {
   grid-column: 1/2;
@@ -133,6 +141,13 @@ html {
   grid-row: 1/2;
   display: flex;
   align-items: center;
+}
+.postlist-center-text h3 {
+  -webkit-text-underline-position: under;
+  -ms-text-underline-position: below;
+  text-underline-position: under;
+  text-decoration: underline !important;
+  text-decoration-color: #ba1a52 !important;
 }
 
 .postlist-center {
