@@ -60,6 +60,10 @@ p {
   font-weight: 100;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 16px;
 }
@@ -75,7 +79,7 @@ html {
 }
 
 .animatable--now {
-  transition: all 200ms ease-out;
+  transition: all 500ms ease-out;
 }
 
 /*# sourceMappingURL=misc.css.map */

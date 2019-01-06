@@ -13,75 +13,15 @@
     <div class="content-wrap">
 
       <div class="header-wrap">
-        <div class="header-inner-wrap">
-
-          <div class="header-info">
-            <div class="header-info-title">
-              <h1>New here?</h1>
-            </div>
-            <div class="header-info-hub">
-              <button type="button" name="button" id="dropBtn">Get Started...</button>
-            </div>
-          </div>
-
-          <div class="header-nav">
-            <div id="Logo">
-                HOME
-            </div>
-            <div class="active">
-                active
-            </div>
-            <div>
-                active
-            </div>
-            <div>
-                active
-            </div>
-          </div>
-
-        </div>
+        <?php include("view/header.php"); ?>
       </div>
 
       <div class="main-wrap">
-        <div class="">
-          <h3>Hello, like video, sub, enjoy?</h3>
-          <h5>I like video, he subscribe to me eee</h5>
-          <br>
-          <br>
-        </div>
-        <div class="main-inner-wrap">
-          <div class="postlist-left-text">
-            <h3>Relevant</h3>
-          </div>
-          <div class="postlist-center-text">
-            <h3>Recent</h3>
-          </div>
-          <div class="postlist-left">
-            <div class="postlink">
-              <h4>woah gammers just got this message...</h4>
-            </div>
-            <div class="postlink">
-              <h4>woah gammers just got this message...</h4>
-            </div>
-            <div class="postlink">
-              <h4>woah gammers just got this message...</h4>
-            </div>
-          </div>
-          <div class="postlist-center">
-            <div class="postlink">
-              <h4>woah gammers just got this message...</h4>
-            </div>
-            <div class="postlink">
-              <h4>woah gammers just got this message...</h4>
-            </div>
-          </div>
-        </div>
+        <?php include("view/main.php"); ?>
       </div>
 
       <div class="footer-wrap">
-        <div class="footer-inner-wrap">
-
-        </div>
+        <?php include("view/footer.php"); ?>
       </div>
 
     </div>
@@ -95,23 +35,42 @@
 
   $('#dropBtn').click(function(event) {
 
-  $('.header-info').addClass('.animatable--now');
-  $('.header-info').addClass('header-info-fullsize');
-  $('.header-info-title').fadeOut(500);
-  $('.header-info-hub').fadeOut(500);
-  $('#dropBtn').fadeOut(500);
+    $("html, body").animate({ scrollTop: 0 });''
+    $('.header-info').addClass('animatable--now').addClass('header-info-fullsize');
 
-  $(document).on('scroll', function() {
+    $('.header-info-start').fadeOut(500);
+    $('.header-info-pick-wrapper').delay(500).fadeIn(500);
 
-    $(document).off('scroll');
-    $('.header-info').removeClass('header-info-fullsize');
-    $('.header-info-title').fadeIn(500);
-    $('.header-info-hub').fadeIn(500);
-    $('#dropBtn').fadeIn(500);
-    $('.header-info').removeClass('.animatable--now');
-    $("html, body").animate({ scrollTop: 0 });
+    $(document).on('scroll', function() {
+
+      $(document).off('scroll');
+      $('.header-info-pick-wrapper').fadeOut(100);
+
+      if ($('.header-info').hasClass('header-info-fullsize')) {
+        $('.header-info').removeClass('header-info-fullsize');
+      }
+
+      $('.header-info-start').delay(500).fadeIn(500);
+      $('#dropBtn').delay(500).fadeIn(500);
+      $("html, body").animate({ scrollTop: 0 });
+
+    });
+
+
   });
 
-});
+  $('.askbtn').click(function(event) {
+
+    $('.header-info-pick-wrapper').fadeOut(500);
+    $('.header-info-ask-wrapper').delay(500).fadeIn(500);
+
+  });
+
+  $('.answbtn').click(function(event) {
+
+    $('.header-info-pick-wrapper').fadeOut(500);
+    $('.header-info-answer-wrapper').delay(500).fadeIn(500);
+
+  });
 
 </script>
