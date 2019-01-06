@@ -11,7 +11,6 @@
       include('header-postview.php');
     }
     ?>
-
   </div>
 
   <div class="header-nav">
@@ -50,5 +49,10 @@
        ?>
 
   </div>
+
+  <div class="header-exit-button-wrap">
+   <button type="button" name="button" id="header-exit-button">
+   </button>
+ </div>
 
 </div>
