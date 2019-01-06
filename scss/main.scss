@@ -1,7 +1,7 @@
 @import "misc";
 
 .main-outer-wrap {
-  
+
 }
 
 .main-wrap {
@@ -11,6 +11,7 @@
   background: $ThirdDark;
   height: 40rem;
   padding: 1rem;
+  z-index: 999;
 }
 
 .main-inner-wrap {

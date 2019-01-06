@@ -118,6 +118,7 @@ html {
   background: #111111;
   height: 40rem;
   padding: 1rem;
+  z-index: 999;
 }
 
 .main-inner-wrap {

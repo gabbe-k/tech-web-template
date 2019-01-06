@@ -72,6 +72,7 @@
     box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.47);
     min-height: 10rem;
     max-height: 10rem;
+    z-index: 996;
 
     .header-info-title {
       display: flex;
@@ -120,6 +121,8 @@
   grid-template-rows: 1fr 1fr;
   height: 100%;
   width: 100%;
+  overflow: hidden;
+  z-index: 996;
 
   .header-info-pick-options-wrapper {
     width: 100%;
