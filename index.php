@@ -39,28 +39,41 @@
   $('#dropBtn').click(function(event) {
 
     $("html, body").animate({ scrollTop: 0 });
-    $('.header-info').addClass('animatable--now').addClass('header-info-fullsize');
 
-    $('.header-info-start').fadeOut(500);
-    $('.header-info-pick-wrapper').delay(500).fadeIn(500);
-
-    $(document).on('scroll', function() {
-
-      $(document).off('scroll');
-      $('.header-info-pick-wrapper').fadeOut(100);
-      $('.header-info-ask-wrapper').fadeOut(500);
-      $('.header-info-answer-wrapper').fadeOut(500);
-
-      if ($('.header-info').hasClass('header-info-fullsize')) {
-        $('.header-info').removeClass('header-info-fullsize');
-      }
-
-      $('.header-info-start').delay(500).fadeIn(500);
-      $('#dropBtn').delay(500).fadeIn(500);
-      $("html, body").animate({ scrollTop: 0 });
-
+    $('.header-info').addClass('animatable--now').addClass('header-info-fullsize').delay(500).queue(function(next){
+        $(this).removeClass("animatable--now");
+        $('.header-info-pick-wrapper').fadeIn(500);
+        next();
     });
 
+    $('.header-info-start').fadeOut(500);
+
+    if ($('.header-info').hasClass('header-info-fullsize')) {
+
+      $(document).on('scroll', function() {
+
+        $(document).off('scroll');
+
+        $('.header-info-pick-wrapper').fadeOut(500);
+        $('.header-info-ask-wrapper').fadeOut(500);
+        $('.header-info-answer-wrapper').fadeOut(500);
+
+        $('.header-info').addClass('animatable--now').delay(500).queue(function(next){
+
+          $(this).removeClass('header-info-fullsize').delay(500).queue(function(next){
+            $(this).removeClass("animatable--now");
+            next();
+          });
+          next();
+        });
+
+        $('.header-info-start').delay(500).fadeIn(500);
+        $('#dropBtn').delay(500).fadeIn(500);
+        $("html, body").animate({ scrollTop: 0 });
+
+      });
+
+    }
 
   });
 
