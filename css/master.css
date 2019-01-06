@@ -89,6 +89,10 @@ html {
 }
 
 .animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.header-info {
   transition: all 500ms ease-out;
 }
 
@@ -202,6 +206,10 @@ html {
 }
 
 .animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.header-info {
   transition: all 500ms ease-out;
 }
 
@@ -640,6 +648,10 @@ html {
 }
 
 .animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.header-info {
   transition: all 500ms ease-out;
 }
 
@@ -758,6 +770,10 @@ html {
 }
 
 .animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.header-info {
   transition: all 500ms ease-out;
 }
 
@@ -963,6 +979,10 @@ html {
 }
 
 .animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.header-info {
   transition: all 500ms ease-out;
 }
 
