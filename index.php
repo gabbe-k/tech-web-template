@@ -59,7 +59,7 @@
   $('#header-exit-button').click(function(event) {
 
       $.scrollLock(true);
-
+      $('.header-exit-button-wrap').removeClass('header-exit-button-active');
       $('.header-info-pick-wrapper').fadeOut(500);
       $('.header-info-ask-wrapper').fadeOut(500);
       $('.header-info-answer-wrapper').fadeOut(500);
