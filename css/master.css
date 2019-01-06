@@ -96,10 +96,6 @@ html {
   transition: all 200ms ease-out;
 }
 
-.animatable--now {
-  transition: all 200ms ease-out;
-}
-
 .animatable--now.buttonClicked,
 .animatable--now.commShow,
 .animatable--now.commClicked {
@@ -210,10 +206,6 @@ html {
 }
 
 .animatable--now.isShown {
-  transition: all 200ms ease-out;
-}
-
-.animatable--now {
   transition: all 200ms ease-out;
 }
 
@@ -652,10 +644,6 @@ html {
   transition: all 200ms ease-out;
 }
 
-.animatable--now {
-  transition: all 200ms ease-out;
-}
-
 .animatable--now.buttonClicked,
 .animatable--now.commShow,
 .animatable--now.commClicked {
@@ -771,10 +759,6 @@ html {
 }
 
 .animatable--now.isShown {
-  transition: all 200ms ease-out;
-}
-
-.animatable--now {
   transition: all 200ms ease-out;
 }
 
@@ -979,10 +963,6 @@ html {
 }
 
 .animatable--now.isShown {
-  transition: all 200ms ease-out;
-}
-
-.animatable--now {
   transition: all 200ms ease-out;
 }
 

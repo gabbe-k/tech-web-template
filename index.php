@@ -48,6 +48,8 @@
 
       $(document).off('scroll');
       $('.header-info-pick-wrapper').fadeOut(100);
+      $('.header-info-ask-wrapper').fadeOut(500);
+      $('.header-info-answer-wrapper').fadeOut(500);
 
       if ($('.header-info').hasClass('header-info-fullsize')) {
         $('.header-info').removeClass('header-info-fullsize');
