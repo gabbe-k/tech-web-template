@@ -1,6 +1,6 @@
 <div class="header-info-ask">
   <?php
-  //if (isset($_SESSION['u_id'])) {
+  if (isset($_SESSION['u_id'])) {
 ?>
   <form action="sql/sqpost.php"  id="loginForm" method="post">
     <input type="text" id="formfields" name="title" value="Title">
@@ -10,11 +10,11 @@
   </form>
 
 <?php
-  //}
-  //else {
+  }
+  else {
     ?>
     <h1>Please log in</h1>
     <?php
-  //}
+  }
 ?>
 </div>

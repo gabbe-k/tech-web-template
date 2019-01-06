@@ -28,7 +28,7 @@
 h1 {
   color: #EDEDED;
   font-size: 6rem;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 h2 {
@@ -48,20 +48,30 @@ h4 {
 }
 
 h5 {
-  color: #757575;
+  color: #848484;
   font-size: 0.8rem;
+}
+
+h6 {
+  color: #EDEDED;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 p {
   font-size: 0.8rem;
   font-weight: bolder;
-  color: #757575;
+  color: #848484;
   text-align: center;
   font-weight: 100;
 }
 
 a {
   text-decoration: none;
+}
+
+div {
+  font-size: 0.9rem;
 }
 
 html {
@@ -80,6 +90,29 @@ html {
 
 .animatable--now {
   transition: all 500ms ease-out;
+}
+
+.animatable--now.isShown {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now {
+  transition: all 200ms ease-out;
+}
+
+.animatable--now.buttonClicked,
+.animatable--now.commShow,
+.animatable--now.commClicked {
+  transition: all 200ms ease-out;
+}
+
+.isShown {
+  width: 100% !important;
+  height: 2rem !important;
+  opacity: 1 !important;
+}
+.isShown input {
+  display: block !important;
 }
 
 .main-wrap {

@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    require_once('sqlprint/prposts.php');
+    require_once('sqlprint/prtags.php');
+ ?>
 <html lang="en" dir="ltr">
 
   <head>
@@ -16,8 +21,12 @@
         <?php include("view/header.php"); ?>
       </div>
 
-      <div class="main-wrap">
-        <?php include("view/postview.php"); ?>
+      <div class="main-outer-wrap">
+        <div class="postViewer">
+          <?php
+            PrintPosts();
+           ?>
+        </div>
       </div>
 
       <div class="footer-wrap">
@@ -30,5 +39,73 @@
 </html>
 
 <script type="text/javascript">
+
+    $('#addTags').click(function(event) {
+
+      $('#addTags').addClass('animatable--now');
+      $('#addTagForm').addClass('animatable--now');
+
+      $('#addTags').fadeOut(150, function() {
+          $(this).hide();
+          $('#addTagForm').addClass('isShown');
+          $('#addTagForm').fadeIn(300);
+      });
+
+      $('#addTagForm').on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
+        $('#addTagForm').removeClass('animatable--now');
+        $('#addTags').removeClass('animatable--now');
+      });
+
+
+    });
+
+    $('.postViewer').click(function(event) {
+
+        var log = $('#log');
+
+        if($(event.target).parent().parent().is('.post') && $(event.target).is('#commButton')) {
+
+          var commfield = $(event.target).parent().siblings('#comments').children();
+          console.log(commfield);
+          var commButton = $(event.target);
+          console.log(commButton);
+          var divCommButtom = $(event.target).parent('.commentbutton');
+
+
+          $(commfield).addClass('animatable--now');
+          $(commButton).addClass('animatable--now');
+          $(divCommButtom).addClass('animatable--now');
+
+          if (!$(commfield).hasClass('commShow')) {
+
+            $(commfield).addClass('commShow');
+            $(commButton).addClass('buttonClicked');
+            $(divCommButtom).addClass('commClicked');
+
+          }
+          else {
+
+            $(commfield).animate({ scrollTop: "0" });
+
+            $(commfield).removeClass('commShow');
+            $(commButton).removeClass('buttonClicked');
+            $(divCommButtom).removeClass('commClicked');
+
+            $(commfield).on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
+              $(commfield).removeClass('animatable--now');
+              $(commButton).removeClass('animatable--now');
+              $(divCommButtom).removeClass('animatable--now');
+            });
+
+          }
+
+        }
+        else {
+
+           console.log('someting was clicked.');
+
+        }
+    });
+
 
 </script>

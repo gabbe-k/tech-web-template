@@ -14,7 +14,7 @@
 
   .header-nav {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 16fr;
+    grid-template-columns: repeat(17, 1fr);
     background: $SecDark;
     -webkit-box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.33);
     -moz-box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.33);
@@ -28,9 +28,9 @@
         position: relative;
         height: 100%;
         width: 100%;
-        background: $SecDark;
+        transition: .05s ease-out;
 
-        &:hover {
+        &:hover:not(#nav-login-div) {
           -webkit-box-shadow: inset 0px -.25rem 0px 0px $Accent;
           -moz-box-shadow: inset 0px -.25rem 0px 0px $Accent;
           box-shadow: inset 0px -.25rem 0px 0px $Accent;
@@ -39,6 +39,23 @@
       }
 
     z-index: 999;
+  }
+
+  #nav-login {
+    grid-column: 17;
+    background: $PrimDark !important;
+    -webkit-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.4);
+    -moz-box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.4);
+    box-shadow: inset 0px 0px 300px 200px rgba(0,0,0,0.4);
+
+    #nav-login-div {
+      &:hover {
+        background: $SecDark;
+        -webkit-box-shadow: inset 0px 0px 100px 100px rgba(0,0,0,0.01);
+        -moz-box-shadow: inset 0px 0px 100px 100px rgba(0,0,0,0.01);
+        box-shadow: inset 0px 0px 100px 100px rgba(0,0,0,0.01);
+      }
+    }
   }
 
   #header-nav-active {
@@ -138,7 +155,7 @@
   background: $SecDark;
   display: none;
   width: 100%;
-  height: 200vh;
+  height: 90vh;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.9);
 
 }
@@ -151,4 +168,107 @@
   width: 100%;
   height: 90vh;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.9);
+}
+
+.header-info-title {
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+#tagviewer {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0.2fr, 1fr);
+  grid-column-gap: 0.2rem;
+  height: 100%;
+
+  #tagmessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .25rem;
+  }
+
+  #addDiv {
+
+    display: flex;
+    align-items: center;
+
+    #addTags {
+
+      @include buttonMix();
+      box-shadow: none;
+      background:  url("../img/plus.svg");
+      filter: invert(100%);
+      background-size: 100% 100%;
+      text-decoration: none;
+      height: 2em;
+      width: 2em;
+      transition: transform 0.2s;
+      opacity: 1;
+
+      &:focus {
+        transform: rotate(90deg);
+      }
+
+      &:active {
+        transform: rotate(180deg);
+      }
+
+    }
+
+    #addTagForm {
+      @include formMix();
+      width: 0%;
+      height: 0%;
+      padding: 0;
+      box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
+      opacity: 0;
+      border-radius: 0.2rem;
+
+      input {
+        display: none;
+        padding-left: 0.2rem;
+        background: $Text;
+        font-size: 0.7rem;
+        font-weight: 600;
+        height: 2rem;
+        color: $Darkest;
+      }
+    }
+
+  }
+
+    a  {
+
+      @include buttonMix();
+
+      height: 2rem;
+      border-radius: 0.15rem;
+      background: $SecDark;
+      padding: 0 0.5rem 0 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &:active {
+        opacity: 0;
+        cursor: default;
+      }
+
+      text-decoration: none;
+      color: $Text;
+      font: 1rem Helvetica, Verdana, sans-serif;
+
+    }
+
+  }
+
+  .buttonClicked {
+  transform: rotate(180deg);
 }

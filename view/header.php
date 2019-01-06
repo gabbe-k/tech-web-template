@@ -8,7 +8,7 @@
       include('header-new-here.php');
     }
     else if ($uri == "/postview.php"){
-
+      include('header-postview.php');
     }
     ?>
 
@@ -27,6 +27,27 @@
         POSTS
       </div>
     </a>
+
+    <?php
+      if (isset($_SESSION['u_id'])) {
+    ?>
+     <a href="../sql/sqlogout.php" id="nav-login">
+       <div id="nav-login-div">
+         LOGOUT
+       </div>
+     </a>
+    <?php
+      }
+      else {
+    ?>
+      <a href="../login.php" id="nav-login">
+        <div id="nav-login-div">
+          LOGIN
+        </div>
+      </a>
+      <?php
+        }
+       ?>
 
   </div>
 

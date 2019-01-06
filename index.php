@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+ ?>
 <html lang="en" dir="ltr">
 
   <head>
@@ -16,7 +19,7 @@
         <?php include("view/header.php"); ?>
       </div>
 
-      <div class="main-wrap">
+      <div class="main-outer-wrap">
         <?php include("view/main.php"); ?>
       </div>
 
@@ -35,7 +38,7 @@
 
   $('#dropBtn').click(function(event) {
 
-    $("html, body").animate({ scrollTop: 0 });''
+    $("html, body").animate({ scrollTop: 0 });
     $('.header-info').addClass('animatable--now').addClass('header-info-fullsize');
 
     $('.header-info-start').fadeOut(500);
