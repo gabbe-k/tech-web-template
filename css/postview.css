@@ -48,7 +48,7 @@ h4 {
 }
 
 h5 {
-  color: #848484;
+  color: #aaaaaa;
   font-size: 0.8rem;
 }
 
@@ -61,7 +61,7 @@ h6 {
 p {
   font-size: 0.8rem;
   font-weight: bolder;
-  color: #848484;
+  color: #aaaaaa;
   text-align: center;
   font-weight: 100;
 }
@@ -136,7 +136,7 @@ html {
 }
 .postViewer .post div:not(.commentbutton):not(#usrImg):not(#commText):not(#usr):not(#commfield) {
   padding: 0.5rem;
-  background: #848484;
+  background: #aaaaaa;
 }
 .postViewer .post #usr p {
   font-size: 0.8rem;
@@ -181,9 +181,6 @@ html {
   -webkit-transform: none;
   transform: none;
 }
-.postViewer .post #commfield .comment {
-  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.25);
-}
 .postViewer .post .commentbutton {
   grid-area: commentbutton;
   height: 5rem;
@@ -192,7 +189,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background-image: linear-gradient(rgba(255, 0, 0, 0) 0%, #848484 50%) !important;
+  background-image: linear-gradient(rgba(255, 0, 0, 0) 0%, #aaaaaa 50%) !important;
 }
 .postViewer .post .commentbutton #commButton {
   z-index: 999;
@@ -232,7 +229,7 @@ html {
 
 .commClicked {
   margin-top: 0rem !important;
-  background: #848484 !important;
+  background: #aaaaaa !important;
   height: 2.5rem !important;
 }
 
