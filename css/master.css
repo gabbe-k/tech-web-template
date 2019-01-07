@@ -1112,6 +1112,7 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+  min-height: 10rem;
 }
 .postViewer .post {
   z-index: 998;
@@ -1225,7 +1226,8 @@ html {
 .content-wrap {
   display: grid;
   grid-template-columns: 1fr;
-  height: 100%;
+  min-height: 90vh;
+  max-height: auto;
   width: 100%;
   background: #111111;
 }
