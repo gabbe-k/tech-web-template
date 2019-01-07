@@ -454,6 +454,18 @@ html {
   border-radius: none !important;
   background: #EDEDED;
 }
+#tagviewer #tagSearch-Preview a:hover {
+  opacity: 1 !important;
+}
+#tagviewer #tagSearch-Preview a:hover p {
+  opacity: 0.6 !important;
+}
+#tagviewer #tagSearch-Preview a:active {
+  opacity: 1 !important;
+}
+#tagviewer #tagSearch-Preview a:active p {
+  opacity: 0.4 !important;
+}
 #tagviewer #tagSearch-Preview a p {
   text-align: left !important;
   margin: 0.2rem;

@@ -303,6 +303,20 @@
       border-radius: none !important;
       background: $Text;
 
+      &:hover{
+        opacity: 1 !important;
+        p {
+          opacity: .6 !important;
+        }
+      }
+
+      &:active {
+        opacity: 1 !important;
+        p {
+          opacity: .4 !important;
+        }
+      }
+
       p { // BUG:
         text-align: left !important;
         margin: .2rem;

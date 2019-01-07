@@ -563,10 +563,11 @@ html {
 #tagviewer #tagSearch-Preview {
   position: absolute;
   background: #EDEDED;
-  height: 0%;
-  opacity: 0;
   z-index: 999;
   width: 7.5rem;
+  min-height: 0rem;
+  max-height: 0rem;
+  opacity: 0;
   border-radius: 0 0 0.2rem 0.2rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -576,6 +577,18 @@ html {
   box-shadow: none !important;
   border-radius: none !important;
   background: #EDEDED;
+}
+#tagviewer #tagSearch-Preview a:hover {
+  opacity: 1 !important;
+}
+#tagviewer #tagSearch-Preview a:hover p {
+  opacity: 0.6 !important;
+}
+#tagviewer #tagSearch-Preview a:active {
+  opacity: 1 !important;
+}
+#tagviewer #tagSearch-Preview a:active p {
+  opacity: 0.4 !important;
 }
 #tagviewer #tagSearch-Preview a p {
   text-align: left !important;
