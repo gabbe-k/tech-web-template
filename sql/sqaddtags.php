@@ -12,20 +12,22 @@
 
   $tag = preg_replace('/[^a-zA-Z0-9_]/', '', $tag);
 
+  $tag = metaphone($tag, 5);
+
   if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
       echo "already have";
-      header("Location: ../postview.php");
+      header("Location: ../postview.php?tagdupe");
       exit();
   }
   else {
   //här ska vi inte visa en ofärdig tagg
 
-      $sql = "SELECT tagText FROM tags WHERE tagText = '$tag'";
+      $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic = '$tag'";
       $result = mysqli_query($conn, $sql);
       $resultLen = mysqli_num_rows($result);
 
       if ($resultLen == 0) {
-        echo "unknown tag";
+        header("Location: ../postview.php?unknown");
         exit();
       }
       else {
@@ -33,7 +35,7 @@
         echo "added tag: " . $tag;
       }
 
-      header("Location: ../postview.php");
+      header("Location: ../postview.php?addedtag");
       Disconnect($conn);
       exit();
   }

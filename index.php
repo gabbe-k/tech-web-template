@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
+    //include('convertAllPhonetic.php');
     session_start();
+    //TagsToMetaPhone();
  ?>
 <html lang="en" dir="ltr">
 

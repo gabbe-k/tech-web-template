@@ -12,13 +12,18 @@
       }
       else {
         $tagsArray = $_SESSION['tagText'];
+        $conn = Connect();
 
         for ($i=0; $i < count($tagsArray); $i++) {
+
+          $sql = "SELECT tagText from tags WHERE tagTextPhonetic = '$tagsArray[$i]'";
+          $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($result);
             ?>
             <div>
                 <a href="../sqlprint/prremovetag.php?tag=<?php echo $tagsArray[$i]; ?>">
                     <?php
-                    echo $tagsArray[$i];
+                    echo $row['tagText'];
                     ?>
                 </a>
             </div>

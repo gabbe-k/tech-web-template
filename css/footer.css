@@ -96,7 +96,8 @@ html {
   transition: all 500ms ease-out;
 }
 
-.animatable--now.isShown {
+.animatable--now.isShown,
+.animatable--now.suggShow {
   transition: all 200ms ease-out;
 }
 
@@ -107,12 +108,18 @@ html {
 }
 
 .isShown {
-  width: 100% !important;
+  width: 7.5rem !important;
   height: 2rem !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
+}
+
+.suggShow {
+  min-height: 2.5rem !important;
+  max-height: auto !important;
+  opacity: 1 !important;
 }
 
 .footer-wrap {

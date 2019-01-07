@@ -262,27 +262,59 @@
 
     }
 
-    #addTagForm {
-      @include formMix();
-      width: 0%;
-      height: 0%;
-      padding: 0;
-      box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
-      opacity: 0;
-      border-radius: 0.2rem;
+  }
 
-      input {
-        display: none;
-        padding-left: 0.2rem;
-        background: $Text;
-        font-size: 0.7rem;
-        font-weight: 600;
-        height: 2rem;
+  #addTagForm {
+    @include formMix();
+    width: 0%;
+    height: 0%;
+    padding: 0;
+    box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
+    opacity: 0;
+    border-radius: 0.2rem 0.2rem 0 0;
+
+    input {
+      display: none;
+      padding-left: 0.2rem;
+      background: $Text;
+      font-size: 0.7rem;
+      font-weight: 600;
+      height: 2rem;
+      color: $Darkest;
+    }
+  }
+
+  #tagSearch-Preview {
+    position: absolute;
+    background: $Text;
+    z-index: 999;
+    width: 7.5rem;
+    min-height: 0rem;
+    max-height: 0rem;
+    opacity: 0;
+    border-radius: 0 0 0.2rem 0.2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
+
+    a {
+
+      box-shadow: none !important;
+      border-radius: none !important;
+      background: $Text;
+
+      p { // BUG:
+        text-align: left !important;
+        margin: .2rem;
         color: $Darkest;
+        font-weight: 600 !important;
+        font-size: .7rem !important;
       }
+
     }
 
   }
+
 
     a  {
 
