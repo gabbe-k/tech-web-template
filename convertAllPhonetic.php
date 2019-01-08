@@ -6,10 +6,10 @@ function TagsToMetaPhone() {
 
   $tag1 = metaphone("one" , 5);
   $tag2 =  metaphone("two", 5);
-  $tag3 =  metaphone("three" 5);
-  $tag4 =  metaphone("four" 5);
+  $tag3 =  metaphone("three", 5);
+  $tag4 =  metaphone("four", 5);
   $tag5 =  metaphone("five", 5);
-  $tag6 =  metaphone("five", 5);
+  $tag6 =  metaphone("six", 5);
   $tag7 =  metaphone("seven", 5);
   $tag8 =  metaphone("eight", 5);
 

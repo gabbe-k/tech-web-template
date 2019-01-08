@@ -109,17 +109,11 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
-}
-
-.suggShow {
-  min-height: 2.5rem !important;
-  max-height: auto !important;
-  opacity: 1 !important;
 }
 
 * {
@@ -233,17 +227,11 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
-}
-
-.suggShow {
-  min-height: 2.5rem !important;
-  max-height: auto !important;
-  opacity: 1 !important;
 }
 
 .header-exit-button-wrap {
@@ -483,24 +471,24 @@ html {
   font-size: 5rem;
 }
 
-#tagviewer {
+.tagsection-wrapper #tagviewer {
   display: inline-grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0.2fr, 1fr);
   grid-column-gap: 0.2rem;
   height: 100%;
 }
-#tagviewer #tagmessage {
+.tagsection-wrapper #tagviewer #tagmessage {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.25rem;
 }
-#tagviewer #addDiv {
+.tagsection-wrapper #tagviewer #addDiv {
   display: flex;
   align-items: center;
 }
-#tagviewer #addDiv #addTags {
+.tagsection-wrapper #tagviewer #addDiv #addTags {
   z-index: 999;
   cursor: pointer;
   outline: none;
@@ -518,86 +506,20 @@ html {
   transition: transform 0.2s;
   opacity: 1;
 }
-#tagviewer #addDiv #addTags:focus {
+.tagsection-wrapper #tagviewer #addDiv #addTags:focus {
   border: none;
   outline: none;
 }
-#tagviewer #addDiv #addTags:active {
+.tagsection-wrapper #tagviewer #addDiv #addTags:active {
   box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0);
 }
-#tagviewer #addDiv #addTags:focus {
+.tagsection-wrapper #tagviewer #addDiv #addTags:focus {
   transform: rotate(90deg);
 }
-#tagviewer #addDiv #addTags:active {
+.tagsection-wrapper #tagviewer #addDiv #addTags:active {
   transform: rotate(180deg);
 }
-#tagviewer #addTagForm {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  box-shadow: 0 0.15rem 0 0rem rgba(0, 0, 0, 0.25);
-  width: 0%;
-  height: 0%;
-  padding: 0;
-  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  border-radius: 0.2rem 0.2rem 0 0;
-}
-#tagviewer #addTagForm input {
-  width: 100%;
-  height: 100%;
-  background: #101638;
-  border: none;
-  outline: none;
-  color: #aaaaaa;
-}
-#tagviewer #addTagForm input {
-  display: none;
-  padding-left: 0.2rem;
-  background: #EDEDED;
-  font-size: 0.7rem;
-  font-weight: 600;
-  height: 2rem;
-  color: #0c0c0c;
-}
-#tagviewer #tagSearch-Preview {
-  position: absolute;
-  background: #EDEDED;
-  z-index: 999;
-  width: 7.5rem;
-  min-height: 0rem;
-  max-height: 0rem;
-  opacity: 0;
-  border-radius: 0 0 0.2rem 0.2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
-}
-#tagviewer #tagSearch-Preview a {
-  box-shadow: none !important;
-  border-radius: none !important;
-  background: #EDEDED;
-}
-#tagviewer #tagSearch-Preview a:hover {
-  opacity: 1 !important;
-}
-#tagviewer #tagSearch-Preview a:hover p {
-  opacity: 0.6 !important;
-}
-#tagviewer #tagSearch-Preview a:active {
-  opacity: 1 !important;
-}
-#tagviewer #tagSearch-Preview a:active p {
-  opacity: 0.4 !important;
-}
-#tagviewer #tagSearch-Preview a p {
-  text-align: left !important;
-  margin: 0.2rem;
-  color: #0c0c0c;
-  font-weight: 600 !important;
-  font-size: 0.7rem !important;
-}
-#tagviewer a {
+.tagsection-wrapper #tagviewer a {
   z-index: 999;
   cursor: pointer;
   outline: none;
@@ -616,23 +538,101 @@ html {
   color: #EDEDED;
   font: 1rem Helvetica, Verdana, sans-serif;
 }
-#tagviewer a:focus {
+.tagsection-wrapper #tagviewer a:focus {
   border: none;
   outline: none;
 }
-#tagviewer a:active {
+.tagsection-wrapper #tagviewer a:active {
   box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0);
 }
-#tagviewer a:hover {
+.tagsection-wrapper #tagviewer a:hover {
   opacity: 0.6;
 }
-#tagviewer a:active {
+.tagsection-wrapper #tagviewer a:active {
   opacity: 0;
   cursor: default;
 }
-
-.buttonClicked {
+.tagsection-wrapper .tagSearch-Wrapper {
+  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
+  background: #EDEDED;
+  width: 0rem;
+  min-height: 2rem;
+  max-height: auto;
+  opacity: 0;
+  border-radius: 0.2rem;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview {
+  background: #EDEDED;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: absolute;
+  width: 7.5rem;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form input {
+  text-align: left;
+  margin-left: 0.2rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  width: 7.5rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form:hover {
+  opacity: 1;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form:hover input {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form:active {
+  opacity: 1 !important;
+}
+.tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview form:active input {
+  opacity: 0.4 !important;
+}
+.tagsection-wrapper .tagSearch-Wrapper #addTagForm {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 0.15rem 0 0rem rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.1);
+  background: none;
+}
+.tagsection-wrapper .tagSearch-Wrapper #addTagForm input {
+  width: 100%;
+  height: 100%;
+  background: #101638;
+  border: none;
+  outline: none;
+  color: #aaaaaa;
+}
+.tagsection-wrapper .tagSearch-Wrapper #addTagForm input {
+  display: none;
+  padding-left: 0.2rem;
+  background: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  height: 2rem;
+  color: #0c0c0c;
+}
+.tagsection-wrapper .buttonClicked {
   transform: rotate(180deg);
+}
+
+.tagSearch-Wrapper-Border {
+  border-radius: 0.2rem 0.2rem 0 0 !important;
 }
 
 * {
@@ -746,17 +746,11 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
-}
-
-.suggShow {
-  min-height: 2.5rem !important;
-  max-height: auto !important;
-  opacity: 1 !important;
 }
 
 .footer-wrap {
@@ -875,17 +869,11 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
-}
-
-.suggShow {
-  min-height: 2.5rem !important;
-  max-height: auto !important;
-  opacity: 1 !important;
 }
 
 .main-wrap {
@@ -1091,17 +1079,11 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 }
 .isShown input {
   display: block !important;
-}
-
-.suggShow {
-  min-height: 2.5rem !important;
-  max-height: auto !important;
-  opacity: 1 !important;
 }
 
 .postViewer {

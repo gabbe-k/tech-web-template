@@ -220,115 +220,52 @@
   }
 }
 
-#tagviewer {
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(0.2fr, 1fr);
-  grid-column-gap: 0.2rem;
-  height: 100%;
+.tagsection-wrapper {
 
-  #tagmessage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: .25rem;
-  }
 
-  #addDiv {
+  #tagviewer {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0.2fr, 1fr);
+    grid-column-gap: 0.2rem;
+    height: 100%;
 
-    display: flex;
-    align-items: center;
-
-    #addTags {
-
-      @include buttonMix();
-      box-shadow: none;
-      background:  url("../img/plus.svg");
-      filter: invert(100%);
-      background-size: 100% 100%;
-      text-decoration: none;
-      height: 2em;
-      width: 2em;
-      transition: transform 0.2s;
-      opacity: 1;
-
-      &:focus {
-        transform: rotate(90deg);
-      }
-
-      &:active {
-        transform: rotate(180deg);
-      }
-
+    #tagmessage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: .25rem;
     }
 
-  }
+    #addDiv {
 
-  #addTagForm {
-    @include formMix();
-    width: 0%;
-    height: 0%;
-    padding: 0;
-    box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
-    opacity: 0;
-    border-radius: 0.2rem 0.2rem 0 0;
+      display: flex;
+      align-items: center;
 
-    input {
-      display: none;
-      padding-left: 0.2rem;
-      background: $Text;
-      font-size: 0.7rem;
-      font-weight: 600;
-      height: 2rem;
-      color: $Darkest;
-    }
-  }
+      #addTags {
 
-  #tagSearch-Preview {
-    position: absolute;
-    background: $Text;
-    z-index: 999;
-    width: 7.5rem;
-    min-height: 0rem;
-    max-height: 0rem;
-    opacity: 0;
-    border-radius: 0 0 0.2rem 0.2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
+        @include buttonMix();
+        box-shadow: none;
+        background:  url("../img/plus.svg");
+        filter: invert(100%);
+        background-size: 100% 100%;
+        text-decoration: none;
+        height: 2em;
+        width: 2em;
+        transition: transform 0.2s;
+        opacity: 1;
 
-    a {
-
-      box-shadow: none !important;
-      border-radius: none !important;
-      background: $Text;
-
-      &:hover{
-        opacity: 1 !important;
-        p {
-          opacity: .6 !important;
+        &:focus {
+          transform: rotate(90deg);
         }
-      }
 
-      &:active {
-        opacity: 1 !important;
-        p {
-          opacity: .4 !important;
+        &:active {
+          transform: rotate(180deg);
         }
-      }
 
-      p { // BUG:
-        text-align: left !important;
-        margin: .2rem;
-        color: $Darkest;
-        font-weight: 600 !important;
-        font-size: .7rem !important;
       }
 
     }
-
-  }
-
 
     a  {
 
@@ -357,8 +294,91 @@
 
     }
 
+}
+
+.tagSearch-Wrapper {
+
+  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
+  background: $Text;
+  width: 0rem;
+  min-height: 2rem;
+  max-height: auto;
+  opacity: 0;
+  border-radius: 0.2rem;
+
+    #tagSearch-Preview {
+      background: $Text;
+      z-index: 999;
+      display: grid;
+      grid-template-columns: 1fr;
+      position: absolute;
+      width: 7.5rem;
+      border-radius:  0 0 0.2rem 0.2rem;
+
+        form {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+
+          input { // BUG:
+            text-align: left;
+            margin-left: .2rem;
+            font-weight: 600;
+            font-size: .7rem;
+            width: 7.5rem;
+            height: 2rem;
+            border: none;
+            background: none;
+            outline: none;
+          }
+
+          &:hover{
+            opacity: 1;
+            input {
+              opacity: .6;
+              cursor: pointer;
+            }
+          }
+
+          &:active {
+          opacity: 1 !important;
+          input {
+            opacity: .4 !important;
+          }
+
+        }
+
+      }
+
   }
+
+  #addTagForm {
+    @include formMix();
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
+    background: none;
+
+    input {
+      display: none;
+      padding-left: 0.2rem;
+      background: none;
+      font-size: 0.7rem;
+      font-weight: 600;
+      height: 2rem;
+      color: $Darkest;
+    }
+  }
+
+}
 
   .buttonClicked {
   transform: rotate(180deg);
+}
+
+}
+
+.tagSearch-Wrapper-Border {
+    border-radius: 0.2rem 0.2rem 0 0 !important;
 }

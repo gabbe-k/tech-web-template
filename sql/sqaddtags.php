@@ -8,39 +8,55 @@
 
   $conn = Connect();
 
-  $tag = ClearTags($conn, $_POST['tagSearch']);
+  if (isset($_POST['suggText'])) {
 
-  $tag = preg_replace('/[^a-zA-Z0-9_]/', '', $tag);
+    $tag = metaphone($_POST['suggText'], 5);
 
-  $tag = metaphone($tag, 5);
-
-  if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
-      echo "already have";
+    if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
       header("Location: ../postview.php?tagdupe");
-      exit();
+    }
+    else {
+      $_SESSION['tagText'][] = $tag;
+      header("Location: ../postview.php?addedtag");
+    }
+    Disconnect($conn);
+    exit();
+
   }
   else {
-  //här ska vi inte visa en ofärdig tagg
+    $tag = ClearTags($conn, $_POST['tagSearch']);
 
-      $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic = '$tag'";
-      $result = mysqli_query($conn, $sql);
-      $resultLen = mysqli_num_rows($result);
+    $tag = preg_replace('/[^a-zA-Z0-9_]/', '', $tag);
 
-      if ($resultLen == 0) {
-        header("Location: ../postview.php?unknown");
+    $tag = metaphone($tag, 5);
+
+    if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
+        echo "already have";
+        header("Location: ../postview.php?tagdupe");
         exit();
-      }
-      else {
-        $_SESSION['tagText'][] = $tag;
-        echo "added tag: " . $tag;
-      }
+    }
+    else {
+    //här ska vi inte visa en ofärdig tagg
 
-      header("Location: ../postview.php?addedtag");
-      Disconnect($conn);
-      exit();
+        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%'";
+        $result = mysqli_query($conn, $sql);
+        $resultLen = mysqli_num_rows($result);
+
+        if ($resultLen == 0) {
+          header("Location: ../postview.php?unknown");
+          exit();
+        }
+        else {
+          $_SESSION['tagText'][] = $tag;
+          echo "added tag: " . $tag;
+        }
+
+        header("Location: ../postview.php?addedtag");
+        Disconnect($conn);
+        exit();
+    }
+
   }
-
-
 
   /*
   not work atm

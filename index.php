@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-    //include('convertAllPhonetic.php');
+  //  include('convertAllPhonetic.php');
     session_start();
-    //TagsToMetaPhone();
+  ///  TagsToMetaPhone();
  ?>
 <html lang="en" dir="ltr">
 
@@ -96,6 +96,11 @@
 
   });
 
+
+
+
+  //https://gist.github.com/barneycarroll/6550066
+  //Inte skapat av Gabriel Käll
   $.scrollLock = ( function scrollLockClosure() {
     'use strict';
 

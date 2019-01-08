@@ -205,16 +205,10 @@ html {
 
 .isShown {
   width: 7.5rem !important;
-  height: 2rem !important;
+  height: auto !important;
   opacity: 1 !important;
 
   input {
     display: block !important;
   }
-}
-
-.suggShow {
-    min-height: 2.5rem !important;
-    max-height: auto !important;
-    opacity: 1 !important;
 }

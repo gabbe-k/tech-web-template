@@ -43,21 +43,17 @@
     $('#addTags').click(function(event) {
 
       $('#addTags').addClass('animatable--now');
-      $('#tagSearch-Preview').addClass('animatable--now');
-      $('#addTagForm').addClass('animatable--now');
+      $('.tagSearch-Wrapper').addClass('animatable--now');
 
       $('#addTags').fadeOut(150, function() {
           $(this).hide();
-          $('#addTagForm').addClass('isShown');
-          $('#addTagForm').fadeIn(300, function() {
-            $('#tagSearch-Preview').addClass('suggShow');  // BUG:
-          });
+          $('.tagSearch-Wrapper').addClass('isShown');
+
       });
 
       $('#addTagForm').on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
         $('#addTagForm').removeClass('animatable--now');
         $('#addTags').removeClass('animatable--now');
-        $('#tagSearch-Preview').removeClass('animatable--now');
       });
 
 
