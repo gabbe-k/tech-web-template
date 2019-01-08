@@ -23,7 +23,8 @@
     exit();
 
   }
-  else {
+  else if(isset($_POST['tagSearch']) && $_POST['tagSearch'] != null)
+  {
     $tag = ClearTags($conn, $_POST['tagSearch']);
 
     $tag = preg_replace('/[^a-zA-Z0-9_]/', '', $tag);
@@ -56,6 +57,11 @@
         exit();
     }
 
+  }
+  else {
+    header("Location: ../postview.php?emptyform");
+    Disconnect($conn);
+    exit();
   }
 
   /*
