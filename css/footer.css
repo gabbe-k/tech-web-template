@@ -124,7 +124,7 @@ html {
 
 .footer-wrap {
   background: #0c0c0c;
-  height: 10rem;
+  min-height: 10rem;
 }
 
 /*# sourceMappingURL=footer.css.map */
