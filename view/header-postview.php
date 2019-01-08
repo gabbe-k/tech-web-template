@@ -22,14 +22,14 @@
   }
 
   function addtag() {
-    
+
   }
 
 </script>
 
 <div class="header-info-start">
   <div class="header-info-title">
-    <h1>Your current tags</h1>
+    <h1 id="header-info-title-text">Your current tags</h1>
   </div>
   <div class="header-info-hub">
 

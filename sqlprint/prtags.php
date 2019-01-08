@@ -6,7 +6,7 @@
       if (!isset($_SESSION['tagText']) || count($_SESSION['tagText']) == 0) {
         echo "
         <div id='tagmessage'>
-          <h6>No tags selected, add tags here</h6>
+          <h6 id='tagmessage-text'>No tags selected, add tags here</h6>
         </div>
         ";
       }

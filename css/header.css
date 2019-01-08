@@ -512,6 +512,9 @@ html {
 .tagsection-wrapper .buttonClicked {
   transform: rotate(180deg);
 }
+.tagsection-wrapper .buttonClickedTwo {
+  transform: rotate(-180deg);
+}
 
 .tagSearch-Wrapper-Border {
   border-radius: 0.2rem 0.2rem 0 0 !important;
