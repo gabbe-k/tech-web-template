@@ -366,7 +366,7 @@ html {
 
 .header-info-fullsize {
   min-height: 100vh !important;
-  max-height: 200vh !important;
+  max-height: 100vh !important;
 }
 
 .header-info-pick-wrapper {
