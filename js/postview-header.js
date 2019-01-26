@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
   function searchq() {
 
@@ -25,5 +24,3 @@ $(document).ready(function() {
   function addtag() {
 
   }
-
-<});

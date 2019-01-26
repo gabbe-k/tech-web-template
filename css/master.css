@@ -318,10 +318,7 @@ html {
 }
 .header-inner-wrap .header-info {
   padding: 2rem;
-  background: #303F9F;
-  -webkit-box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
-  -moz-box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
-  box-shadow: inset 0px 0px 300px 200px rgba(0, 0, 0, 0.47);
+  background: #172353;
   min-height: 10rem;
   max-height: 10rem;
 }
