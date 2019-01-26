@@ -25,6 +25,14 @@
 
               </div>
             </div>
+            <div class="tagSearch-Wrapper">
+              <form id="addTagForm" action="../sql/sqaddtags.php" method="post" autocomplete="off">
+                <input id="addTagForm-Input" type="text" name="tagSearch" placeholder="Add tags..." onkeyup="searchq();" onkeydown="searchq();"/>
+              </form>
+              <div id="tagSearch-Preview">
+
+              </div>
+            </div>
 
         </div>
 

@@ -19,9 +19,6 @@
       <div class="postlink">
         <h4>woah gammers just got this message...</h4>
       </div>
-      <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
-      </div>
     </div>
     <div class="postlist-center">
       <div class="postlink">
