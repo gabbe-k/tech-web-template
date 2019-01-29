@@ -1,45 +1,53 @@
 $(document).ready(function() {
 
-    $('#addTags').click(function(event) {
+    $('.header-wrap').click(function(event) {
 
-      $('#addTags').addClass('animatable--now');
-      $('.tagSearch-Wrapper').addClass('animatable--now');
+      if ($(event.target).is('#addTags')) {
 
-      $('#addTags').removeClass('buttonClickedTwo');
+        var addTags = $(event.target);
 
-      $('#addTags').fadeOut(150, function() {
-          $(this).hide();
-          $('.tagSearch-Wrapper').addClass('isShown');
+        var tagSearchWrapper = $(event.target).parent().siblings('.tagSearch-Wrapper');
 
-          $(document).click(function(event) {
+        $(addTags).addClass('animatable--now');
 
-          window.console&&console.log(event.target);
+        $(tagSearchWrapper).addClass('animatable--now');
 
-          if(!$(event.target).is('#addTagForm-Input') && $('.tagSearch-Wrapper').hasClass('isShown')) {
+        $(addTags).removeClass('buttonClickedTwo');
 
-            $('#addTags').addClass('animatable--now');
-            $('.tagSearch-Wrapper').addClass('animatable--now');
-            $('.tagSearch-Wrapper').removeClass('isShown');
-            $('#addTags').fadeIn(150);
-            $('#addTags').addClass('buttonClickedTwo');
+        $(addTags).fadeOut(150, function() {
+            $(this).hide();
+            $(tagSearchWrapper).addClass('isShown');
 
-          }
+            $(document).click(function(event) {
 
-          });
+            window.console&&console.log(event.target);
 
-      });
+            if(!$(event.target).is('#addTagForm-Input') && $(tagSearchWrapper).hasClass('isShown')) {
 
-      if ($('.tagSearch-Wrapper').hasClass('isShown')) {
+              $(addTags).addClass('animatable--now');
+              $(tagSearchWrapper).addClass('animatable--now');
+              $(tagSearchWrapper).removeClass('isShown');
+              $(addTags).fadeIn(150);
+              $(addTags).addClass('buttonClickedTwo');
+
+            }
+
+            });
+
+        });
+
+        if ($('.tagSearch-Wrapper').hasClass('isShown')) {
 
 
+
+        }
+
+        $('#addTagForm').on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
+          $('#addTagForm').removeClass('animatable--now');
+          $('#addTags').removeClass('animatable--now');
+        });
 
       }
-
-      $('#addTagForm').on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
-        $('#addTagForm').removeClass('animatable--now');
-        $('#addTags').removeClass('animatable--now');
-      });
-
 
     });
 

@@ -31,13 +31,16 @@ CREATE TABLE posts(
 
 CREATE TABLE posttag(
 	postId int(10),
-    tagId int(10)
+  situationTagId int(10),
+	modelTagId int(10),
+	symptomTagId int(10)
 );
 
 CREATE TABLE tags(
 	tagId int(10),
     tagText text,
-    tagTextPhonetic text
+    tagTextPhonetic text,
+		tagType int(10)
 );
 
 INSERT INTO accounts(id, email, username, password) VALUES ('0387','0587','PERSON1', 'PERSON1');
@@ -69,7 +72,7 @@ INSERT INTO posts(id, postID, postText, titleText) VALUES ('8957','8967','12.57 
 
 INSERT INTO posts(id, postID, postText, titleText) VALUES ('4256','4446','Nu är jag magsjuk', 'one six seven');
 
-INSERT INTO posttag(postID, tagId) VALUES ('0587','0001');
+/*INSERT INTO posttag(postID, tagId) VALUES ('0587','0001');
 
 INSERT INTO posttag(postID, tagId) VALUES ('8257','0001');
 INSERT INTO posttag(postID, tagId) VALUES ('8257','0002');
@@ -95,7 +98,7 @@ INSERT INTO posttag(postID, tagId) VALUES ('8967','0006');
 
 INSERT INTO posttag(postID, tagId) VALUES ('4446','0001');
 INSERT INTO posttag(postID, tagId) VALUES ('4446','0006');
-INSERT INTO posttag(postID, tagId) VALUES ('4446','0007');
+INSERT INTO posttag(postID, tagId) VALUES ('4446','0007'); */
 
 /*INSERT INTO tags(tagid, tagText) VALUES ('0001',"one");
 INSERT INTO tags(tagid, tagText) VALUES ('0002',"two");

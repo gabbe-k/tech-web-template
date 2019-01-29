@@ -1,17 +1,17 @@
 <?php
     require_once('./sql/sqconnect.php');
 
-    function PrintTags() {
+    function PrintModel() {
 
-      if (!isset($_SESSION['tagText']) || count($_SESSION['tagText']) == 0) {
+      if (!isset($_SESSION['modelText']) || count($_SESSION['modelText']) == 0) {
         echo "
         <div id='tagmessage'>
-          <h6 id='tagmessage-text'>No tags selected, add tags here</h6>
+          <h6 id='tagmessage-text'>No models selected</h6>
         </div>
         ";
       }
       else {
-        $tagsArray = $_SESSION['tagText'];
+        $tagsArray = $_SESSION['modelText'];
         $conn = Connect();
 
         for ($i=0; $i < count($tagsArray); $i++) {
@@ -21,7 +21,7 @@
           $row = mysqli_fetch_assoc($result);
             ?>
             <div>
-                <a href="../sqlprint/prremovetag.php?tag=<?php echo $tagsArray[$i]; ?>">
+                <a href="../sqlprint/prremovemodel.php?tag=<?php echo $tagsArray[$i]; ?>">
                     <?php
                     echo $row['tagText'];
                     ?>

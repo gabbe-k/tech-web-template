@@ -12,11 +12,11 @@
 
     $tag = metaphone($_POST['suggText'], 5);
 
-    if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
+    if (isset($_SESSION['modelText']) && array_search($tag, $_SESSION['modelText']) !== false) {
       header("Location: ../postview.php?tagdupe");
     }
     else {
-      $_SESSION['tagText'][] = $tag;
+      $_SESSION['modelText'][] = $tag;
       header("Location: ../postview.php?addedtag");
     }
     Disconnect($conn);
@@ -31,7 +31,7 @@
 
     $tag = metaphone($tag, 5);
 
-    if (isset($_SESSION['tagText']) && array_search($tag, $_SESSION['tagText']) !== false) {
+    if (isset($_SESSION['modelText']) && array_search($tag, $_SESSION['modelText']) !== false) {
         echo "already have";
         header("Location: ../postview.php?tagdupe");
         exit();
@@ -39,7 +39,7 @@
     else {
     //här ska vi inte visa en ofärdig tagg
 
-        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%'";
+        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%' AND tagType = '3'";
         $result = mysqli_query($conn, $sql);
         $resultLen = mysqli_num_rows($result);
 
@@ -48,7 +48,7 @@
           exit();
         }
         else {
-          $_SESSION['tagText'][] = $tag;
+          $_SESSION['modelText'][] = $tag;
           echo "added tag: " . $tag;
         }
 
@@ -66,7 +66,7 @@
 
   /*
   not work atm
-    for ($i=0; $i < count($_SESSION['tagText']); $i++) {
+    for ($i=0; $i < count($_SESSION['modelText']); $i++) {
 
       $tmp = $_SESSION['tagText'][$i];
 

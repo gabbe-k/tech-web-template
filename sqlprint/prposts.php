@@ -6,29 +6,73 @@ function PrintPosts() {
 
 $conn = Connect();
 
-$tagsPicked = "";
+$situationsPicked = "";
+$symptomsPicked = "";
+$modelsPicked = "";
 
-if (!isset($_SESSION['tagText'])) {
+if (isset($_SESSION['situationText'])) {
 
-}
-else {
-  for ($i=0; $i < count($_SESSION['tagText']); $i++) {
+  for ($i=0; $i < count($_SESSION['situationText']); $i++) {
 
-    if (isset($_SESSION['tagText'][$i])) {
-      $tmp = $_SESSION['tagText'][$i];
+    if (isset($_SESSION['situationText'][$i])) {
+      $tmp = $_SESSION['situationText'][$i];
 
-      if (count($_SESSION['tagText']) == 1 || $i == count($_SESSION['tagText']) - 1) {
-        $tagsPicked = $tagsPicked . "'" . $tmp . "'";
+      if (count($_SESSION['situationText']) == 1 || $i == count($_SESSION['situationText']) - 1) {
+        $situationsPicked = $situationsPicked . "'" . $tmp . "'";
       }
       else {
-        $tagsPicked = $tagsPicked . "'" . $tmp . "'" . ",";
+        $situationsPicked = $situationsPicked . "'" . $tmp . "'" . ",";
       }
     }
     else {
       $i++;
     }
   }
+
 }
+
+if (isset($_SESSION['symptomText'])) {
+
+  for ($i=0; $i < count($_SESSION['symptomText']); $i++) {
+
+    if (isset($_SESSION['symptomText'][$i])) {
+      $tmp = $_SESSION['symptomText'][$i];
+
+      if (count($_SESSION['symptomText']) == 1 || $i == count($_SESSION['symptomText']) - 1) {
+        $symptomsPicked = $symptomsPicked . "'" . $tmp . "'";
+      }
+      else {
+        $symptomsPicked = $symptomsPicked . "'" . $tmp . "'" . ",";
+      }
+    }
+    else {
+      $i++;
+    }
+  }
+
+}
+
+if (isset($_SESSION['modelText'])) {
+
+  for ($i=0; $i < count($_SESSION['modelText']); $i++) {
+
+    if (isset($_SESSION['modelText'][$i])) {
+      $tmp = $_SESSION['modelText'][$i];
+
+      if (count($_SESSION['modelText']) == 1 || $i == count($_SESSION['modelText']) - 1) {
+        $modelsPicked = $modelsPicked . "'" . $tmp . "'";
+      }
+      else {
+        $modelsPicked = $modelsPicked . "'" . $tmp . "'" . ",";
+      }
+    }
+    else {
+      $i++;
+    }
+  }
+
+}
+
 
 //$sqlTag = "SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked)";
 

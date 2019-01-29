@@ -468,6 +468,13 @@ html {
   font-size: 5rem;
 }
 
+.tagsection-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-row-gap: 0.25rem;
+  height: 100%;
+}
 .tagsection-wrapper #tagviewer {
   display: inline-grid;
   grid-auto-flow: column;

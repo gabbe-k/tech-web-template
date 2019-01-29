@@ -14,14 +14,14 @@ function TagsToMetaPhone() {
   $tag8 =  metaphone("eight", 5);
 
   $conn = Connect();
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0001','one', '$tag1')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0002','two', '$tag2')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0003','three', '$tag3')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0004','four', '$tag4')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0005','five', '$tag5')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0006','six', '$tag6')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0007','seven', '$tag7')");
-  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic) VALUES ('0008','eight', '$tag8')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0001','one', '$tag1', '3')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0002','two', '$tag2', '1')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0003','three', '$tag3', '3')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0004','four', '$tag4', '2')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0005','five', '$tag5', '2')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0006','six', '$tag6', '3')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0007','seven', '$tag7', '3')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagTextPhonetic, tagType) VALUES ('0008','eight', '$tag8', '1')");
 
 
 
