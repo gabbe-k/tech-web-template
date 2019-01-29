@@ -79,25 +79,89 @@ if (isset($_SESSION['modelText'])) {
 //$sqlPostId2 = "SELECT postId FROM `posttag` WHERE tagId IN ($sqlTag)";
 //https://stackoverflow.com/questions/2108187/sql-find-rows-and-sort-according-to-number-of-matching-columns
 //https://stackoverflow.com/questions/5651605/mysql-order-by-number-of-matches
+//något är fel ?
 
 $sqlPostId = "SELECT *
 FROM (
   SELECT
     selection.situationTagId,
     selection.symptomTagId,
-    selection.modelTagId
+    selection.modelTagId,
     3 as Relevance
   FROM
     posttag as selection
   WHERE
-    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked)),
-    selection.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked)),
-    selection.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
+    selection.situationTagId = ($situationsPicked)
+    AND selection.symptomTagId = ($symptomsPicked)
+    AND selection.modelTagId = ($modelsPicked)
+  UNION ALL
+  SELECT
+    posts.situationTagId,
+    posts.symptomTagId,
+    posts.modelTagId,
     count(*) as Relevance
   FROM
-    posttag as situationTagId
-)
+    posttag as posts
+  INNER JOIN
+   (
+     SELECT
+       bySituation.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as bySituation
+     ON
+       posts.situationTagId = bySituation.situationTagId
+     WHERE
+       posts.situationTagId = ($situationsPicked)
+       AND posts.symptomTagId = ($symptomsPicked)
+       AND posts.modelTagId = ($modelsPicked)
+       AND
+       bySituation.postId <> posts.postId
+       UNION ALL
+     SELECT
+       bySymptom.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as bySymptom
+     ON
+       posts.symptomTagId = bySymptom.symptomTagId
+     WHERE
+       posts.situationTagId = ($situationsPicked)
+       AND posts.symptomTagId = ($symptomsPicked)
+       AND posts.modelTagId = ($modelsPicked)
+       AND
+       bySymptom.postId <> posts.postId
+       UNION ALL
+     SELECT
+       byModel.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as byModel
+     ON
+       posts.modelTagId = byModel.modelTagId
+     WHERE
+       posts.situationTagId = ($situationsPicked)
+       AND posts.symptomTagId = ($symptomsPicked)
+       AND posts.modelTagId = ($modelsPicked)
+       AND
+       byModel.postId <> posts.postId
+   ) as matches
+ ON
+   posts.postId = matches.postId
+   group by
+     posts.postId,
+     posts.situationTagId,
+     posts.situationTagId,
+     posts.modelTagId
+) as results
+order by
+  Relevance desc
 "
+
+
 
 $sqlPostId = "SELECT a.postId FROM posttag a INNER JOIN
         (

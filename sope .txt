@@ -1,0 +1,78 @@
+SELECT *
+FROM (
+  SELECT
+    selection.situationTagId,
+    selection.symptomTagId,
+    selection.modelTagId,
+    2 as Relevance
+  FROM
+    posttag as selection
+  WHERE
+    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('TW'))
+    AND selection.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('FR'))
+    AND selection.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('ON'))
+  UNION ALL
+  SELECT
+    posts.situationTagId,
+    posts.symptomTagId,
+    posts.modelTagId,
+    count(*) as Relevance
+  FROM
+    posttag as posts
+  INNER JOIN
+   (
+     SELECT
+       bySituation.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as bySituation
+     ON
+       posts.situationTagId = bySituation.situationTagId
+     WHERE
+       posts.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('TW'))
+       AND posts.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('FR'))
+       AND posts.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('ON'))
+       AND
+       bySituation.postId <> posts.postId
+       UNION ALL
+     SELECT
+       bySymptom.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as bySymptom
+     ON
+       posts.symptomTagId = bySymptom.symptomTagId
+     WHERE
+       posts.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('TW'))
+       AND posts.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('FR'))
+       AND posts.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('ON'))
+       AND
+       bySymptom.postId <> posts.postId
+       UNION ALL
+     SELECT
+       byModel.postId
+     FROM
+       posttag as posts
+     INNER JOIN
+       posttag as byModel
+     ON
+       posts.modelTagId = byModel.modelTagId
+     WHERE
+       posts.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('TW'))
+       AND posts.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('FR'))
+       AND posts.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ('ON'))
+       AND
+       byModel.postId <> posts.postId
+   ) as matches
+ ON
+   posts.postId = matches.postId
+   group by
+     posts.postId,
+     posts.situationTagId,
+     posts.situationTagId,
+     posts.modelTagId
+) as results
+order by
+  Relevance desc
