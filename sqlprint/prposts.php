@@ -83,13 +83,13 @@ $sqlPostId = "SELECT *
 FROM (
   SELECT
     selection.situationTagId,
-    selection.modelTagId,
-    selection.symptomTagId
+    selection.symptomTagId,
+    selection.modelTagId
     3 as Relevance
   FROM
     posttag as selection
   WHERE
-    selection
+    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
 
 )
 "
