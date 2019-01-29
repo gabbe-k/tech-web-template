@@ -78,6 +78,21 @@ if (isset($_SESSION['modelText'])) {
 
 //$sqlPostId2 = "SELECT postId FROM `posttag` WHERE tagId IN ($sqlTag)";
 
+$sqlPostId = "SELECT *
+FROM (
+  SELECT
+    selection.situationTagId,
+    selection.modelTagId,
+    selection.symptomTagId
+    3 as Relevance
+  FROM
+    posttag as selection
+  WHERE
+    selection
+
+)
+"
+
 $sqlPostId = "SELECT a.postId FROM posttag a INNER JOIN
         (
             SELECT  postId, COUNT(*) totalCount
