@@ -39,7 +39,7 @@
     else {
     //här ska vi inte visa en ofärdig tagg
 
-        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%'  AND tagType = '1'";
+        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%' AND tagType = '1'";
         $result = mysqli_query($conn, $sql);
         $resultLen = mysqli_num_rows($result);
 
