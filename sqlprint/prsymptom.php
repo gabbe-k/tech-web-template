@@ -16,7 +16,7 @@
 
         for ($i=0; $i < count($tagsArray); $i++) {
 
-          $sql = "SELECT tagText from tags WHERE tagTextPhonetic = '$tagsArray[$i]' AND tagType = '2'";
+          $sql = "SELECT tagText from tags WHERE tagTextPhonetic = '$tagsArray[$i]'";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
             ?>
