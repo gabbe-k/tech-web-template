@@ -90,9 +90,12 @@ FROM (
   FROM
     posttag as selection
   WHERE
-    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked)),
+    selection.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked)),
+    selection.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
+    count(*) as Relevance
+  FROM
+    posttag as situationTagId
 )
 "
 
