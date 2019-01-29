@@ -78,6 +78,7 @@ if (isset($_SESSION['modelText'])) {
 
 //$sqlPostId2 = "SELECT postId FROM `posttag` WHERE tagId IN ($sqlTag)";
 //https://stackoverflow.com/questions/2108187/sql-find-rows-and-sort-according-to-number-of-matching-columns
+//https://stackoverflow.com/questions/5651605/mysql-order-by-number-of-matches
 
 $sqlPostId = "SELECT *
 FROM (
@@ -90,7 +91,8 @@ FROM (
     posttag as selection
   WHERE
     selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-
+    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+    selection.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
 )
 "
 
