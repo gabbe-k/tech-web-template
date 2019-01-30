@@ -320,7 +320,7 @@ html {
   padding: 2rem;
   background: #172353;
   min-height: 10rem;
-  max-height: 10rem;
+  max-height: 15rem;
 }
 .header-inner-wrap .header-info .header-info-title {
   display: flex;

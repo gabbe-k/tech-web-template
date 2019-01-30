@@ -202,7 +202,7 @@ html {
   padding: 2rem;
   background: #172353;
   min-height: 10rem;
-  max-height: 10rem;
+  max-height: 15rem;
 }
 .header-inner-wrap .header-info .header-info-title {
   display: flex;
@@ -213,7 +213,6 @@ html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-bottom: 4rem;
 }
 .header-inner-wrap .header-info .header-info-hub #dropBtn {
   z-index: 999;
