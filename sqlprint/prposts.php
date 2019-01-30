@@ -81,98 +81,99 @@ if (isset($_SESSION['modelText'])) {
 //https://stackoverflow.com/questions/5651605/mysql-order-by-number-of-matches
 //något är fel ?
 
-$sqlPostId = "SELECT *
+$sqlPostId = "SELECT postId
 FROM (
   SELECT
-    selection.situationTagId,
-    selection.symptomTagId,
-    selection.modelTagId,
+    posttag.postId,
+    posttag.situationTagId,
+    posttag.symptomTagId,
+    posttag.modelTagId,
     3 as Relevance
   FROM
-    posttag as selection
+    posttag
   WHERE
-    selection.situationTagId = ($situationsPicked)
-    AND selection.symptomTagId = ($symptomsPicked)
-    AND selection.modelTagId = ($modelsPicked)
+    posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+    AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
+    AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
   UNION ALL
   SELECT
-    posts.situationTagId,
-    posts.symptomTagId,
-    posts.modelTagId,
+    posttag.postId,
+    posttag.situationTagId,
+    posttag.symptomTagId,
+    posttag.modelTagId,
     count(*) as Relevance
   FROM
-    posttag as posts
+    posttag
   INNER JOIN
    (
      SELECT
        bySituation.postId
      FROM
-       posttag as posts
+       posttag
      INNER JOIN
        posttag as bySituation
      ON
-       posts.situationTagId = bySituation.situationTagId
+       posttag.situationTagId = bySituation.situationTagId
      WHERE
-       posts.situationTagId = ($situationsPicked)
-       AND posts.symptomTagId = ($symptomsPicked)
-       AND posts.modelTagId = ($modelsPicked)
+       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
+       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
        AND
-       bySituation.postId <> posts.postId
+       bySituation.postId <> posttag.postId
        UNION ALL
      SELECT
        bySymptom.postId
      FROM
-       posttag as posts
+       posttag
      INNER JOIN
        posttag as bySymptom
      ON
-       posts.symptomTagId = bySymptom.symptomTagId
+       posttag.symptomTagId = bySymptom.symptomTagId
      WHERE
-       posts.situationTagId = ($situationsPicked)
-       AND posts.symptomTagId = ($symptomsPicked)
-       AND posts.modelTagId = ($modelsPicked)
+       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
+       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
        AND
-       bySymptom.postId <> posts.postId
+       bySymptom.postId <> posttag.postId
        UNION ALL
      SELECT
        byModel.postId
      FROM
-       posttag as posts
+       posttag
      INNER JOIN
        posttag as byModel
      ON
-       posts.modelTagId = byModel.modelTagId
+       posttag.modelTagId = byModel.modelTagId
      WHERE
-       posts.situationTagId = ($situationsPicked)
-       AND posts.symptomTagId = ($symptomsPicked)
-       AND posts.modelTagId = ($modelsPicked)
+       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
+       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
+       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
        AND
-       byModel.postId <> posts.postId
+       byModel.postId <> posttag.postId
    ) as matches
  ON
-   posts.postId = matches.postId
+   posttag.postId = matches.postId
    group by
-     posts.postId,
-     posts.situationTagId,
-     posts.situationTagId,
-     posts.modelTagId
+     posttag.postId,
+     posttag.situationTagId,
+     posttag.situationTagId,
+     posttag.modelTagId
 ) as results
 order by
-  Relevance desc
-"
+  Relevance desc";
 
-
-
-$sqlPostId = "SELECT a.postId FROM posttag a INNER JOIN
+/*$sqlPostId = "SELECT a.postId FROM posttag a INNER JOIN
         (
             SELECT  postId, COUNT(*) totalCount
             FROM    posttag
             WHERE tagId IN (SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked))
             GROUP   BY postId
         ) b ON  a.postId = b.postId
-            WHERE tagId IN (SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked)) ORDER BY b.TotalCount DESC, a.tagId ASC";
+            WHERE tagId IN (SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked)) ORDER BY b.TotalCount DESC, a.tagId ASC"; */
 
 $sql = "SELECT accounts.username, posts.id, posts.titleText, posts.postText, posts.postId FROM accounts, posts WHERE posts.postId IN($sqlPostId) AND posts.id = accounts.id";
+
+echo $sql;
 
 $result = mysqli_query($conn, $sql);
 

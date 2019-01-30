@@ -213,6 +213,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-bottom: 4rem;
 }
 .header-inner-wrap .header-info .header-info-hub #dropBtn {
   z-index: 999;

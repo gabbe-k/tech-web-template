@@ -4,7 +4,7 @@ FROM (
     selection.situationTagId,
     selection.symptomTagId,
     selection.modelTagId,
-    2 as Relevance
+    3 as Relevance
   FROM
     posttag as selection
   WHERE
