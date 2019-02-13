@@ -50,9 +50,5 @@
 
   </div>
 
-  <div class="header-exit-button-wrap">
-   <button type="button" name="button" id="header-exit-button">
-   </button>
- </div>
 
 </div>

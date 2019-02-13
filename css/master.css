@@ -236,11 +236,14 @@ html {
 
 .header-exit-button-wrap {
   width: 100vw;
-  height: 95vh;
+  height: 5vh;
   position: fixed;
-  display: none;
+  top: 90vh;
+  margin-bottom: 5vh;
+  display: flex;
   justify-content: center;
   align-items: flex-end;
+  z-index: 999;
 }
 .header-exit-button-wrap #header-exit-button {
   display: none;
