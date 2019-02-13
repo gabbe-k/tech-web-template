@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   $('#dropBtn').click(function(event) {
 
     $('#header-exit-button').attr("disabled", "disabled");
@@ -12,10 +12,13 @@ $(document).ready(function() {
     $('.header-info-start').fadeOut(500);
     $('.header-info').addClass('animatable--now');
     $('.header-info').addClass('header-info-fullsize');
+    $('.header-info-pick-wrapper').removeClass('header-info-pick-wrapper-fold-in');
+    $('.header-info-pick-wrapper').addClass('animatable--now');
 
     $('#header-exit-button').fadeIn(500).promise().done(function() {
       $('.header-info-pick-wrapper').fadeIn(500);
       $('.header-info').removeClass('animatable--now');
+      $('.header-info-pick-wrapper').removeClass('animatable--now');
     });
 
   });
@@ -29,10 +32,13 @@ $(document).ready(function() {
       $('.header-info-answer-wrapper').fadeOut(500);
       $('.header-info').addClass('animatable--now');
       $('.header-info').removeClass('header-info-fullsize');
+      $('.header-info-pick-wrapper').addClass('header-info-pick-wrapper-fold-in');
+      $('.header-info-pick-wrapper').addClass('animatable--now');
 
     $('#header-exit-button').fadeOut(500).promise().done(function() {
 
       $('.header-info').removeClass("animatable--now");
+      $('.header-info-pick-wrapper').removeClass('animatable--now');
       $('.header-info-start').fadeIn(500);
       $('#dropBtn').fadeIn(500);
       $.scrollLock(false);

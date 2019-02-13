@@ -189,7 +189,8 @@ html {
   transition: all 200ms ease-out;
 }
 
-.animatable--now.header-info {
+.animatable--now.header-info,
+.animatable--now.header-info-pick-wrapper {
   transition: all 500ms ease-out;
 }
 
