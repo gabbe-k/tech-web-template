@@ -1276,6 +1276,10 @@ html {
   height: 2.5rem !important;
 }
 
+html {
+  font-size: 20px;
+}
+
 .content-wrap {
   display: grid;
   grid-template-columns: 1fr;
