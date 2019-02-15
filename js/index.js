@@ -12,6 +12,7 @@ $(document).ready(function() {
     $('.header-info-start').fadeOut(500);
     $('.header-info').addClass('animatable--now');
     $('.header-info').addClass('header-info-fullsize');
+    $('.header-info-wrapper').addClass('header-info-fullsize');
     $('.header-info-pick-wrapper').removeClass('header-info-pick-wrapper-fold-in');
     $('.header-info-pick-wrapper').addClass('animatable--now');
 

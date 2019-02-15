@@ -158,6 +158,7 @@ html {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.2fr;
   background: none;
+  min-height: 20.5rem;
   height: 100%;
   width: 100%;
 }
