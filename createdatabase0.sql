@@ -31,9 +31,9 @@ CREATE TABLE posts(
 
 CREATE TABLE posttag(
 	postId int(10),
-  situationTagId text(10),
-	modelTagId text(10),
-	symptomTagId text(10)
+  situationTagId int(10),
+	modelTagId int(10),
+	symptomTagId int(10)
 );
 
 CREATE TABLE tags(

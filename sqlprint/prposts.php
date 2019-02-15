@@ -2,13 +2,95 @@
 require_once('./sql/sqconnect.php');
 require_once('./sqlprint/prcomments.php');
 
+function GetTags($arr) {
+
+  $conn = Connect();
+
+  for ($i=0; $i < count($arr); $i++) {
+    $tmpStr = "";
+
+    if ($i < count($arr) - 1) {
+      $tmpStr = $tmpStr . $arr[$i] . ',';
+    }
+    else {
+      $tmpStr = $tmpStr . $arr[$i];
+    }
+
+  }
+
+  $sql = "SELECT tagId FROM tags WHERE tagtextPhonetic IN ('$tmpStr')";
+
+  $result = mysqli_query($conn, $sql);
+
+  return mysqli_fetch_assoc($result);
+
+  Disconnect($conn);
+
+}
+
+function CreateLike($arr, $prefix) {
+
+    $arrSit = implode(',' , $arr);
+
+    rsort($arr);
+
+    for ($i = count($arr); $i > 0; $i--) {
+
+      $tmpString = "";
+      $All = [];
+
+      for ($j=0; $j < $i; $j++) {
+        $All[] = $arr[$j];
+      }
+
+      $All = implode(',' , $All);
+
+      $tmpStr1 = '%,' . $All . ',%';
+      $tmpStr2 = $All . ',%';
+      $tmpStr3 = '%,' . $All;
+
+      $tmpString = $tmpString . "
+
+      `$prefix` = '$All'
+      OR    `$prefix` LIKE '$tmpStr2'
+      OR    `$prefix` LIKE '$tmpStr3'
+      OR `$prefix` LIKE  '$tmpStr1'
+
+      ";
+
+    }
+
+    return $tmpString;
+
+  }
+
+
+
+
+
 function PrintPosts() {
 
 $conn = Connect();
 
-$situationsPicked = "";
-$symptomsPicked = "";
-$modelsPicked = "";
+if (isset($_SESSION['situationText'])) {
+
+  $situationsPicked = CreateLike(GetTags($_SESSION['situationText']), "situationTagId");
+
+}
+
+if (isset($_SESSION['situationText'])) {
+
+  $symptomsPicked = CreateLike(GetTags($_SESSION['symptomText']), "symptomTagId");
+
+}
+
+if (isset($_SESSION['situationText'])) {
+
+  $modelsPicked = CreateLike(GetTags($_SESSION['modelText']), "modelTagId");
+
+}
+
+/*
 
 if (isset($_SESSION['situationText'])) {
 
@@ -71,7 +153,7 @@ if (isset($_SESSION['modelText'])) {
     }
   }
 
-}
+} */
 
 
 //$sqlTag = "SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked)";
@@ -81,97 +163,39 @@ if (isset($_SESSION['modelText'])) {
 //https://stackoverflow.com/questions/5651605/mysql-order-by-number-of-matches
 //något är fel ?
 
-$sqlPostId = "SELECT postId
-FROM (
-  SELECT
-    posttag.postId,
-    posttag.situationTagId,
-    posttag.symptomTagId,
-    posttag.modelTagId,
-    3 as Relevance
-  FROM
-    posttag
-  WHERE
-    posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-    AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
-    AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
-  UNION ALL
-  SELECT
-    posttag.postId,
-    posttag.situationTagId,
-    posttag.symptomTagId,
-    posttag.modelTagId,
-    count(*) as Relevance
-  FROM
-    posttag
-  INNER JOIN
-   (
-     SELECT
-       bySituation.postId
-     FROM
-       posttag
-     INNER JOIN
-       posttag as bySituation
-     ON
-       posttag.situationTagId = bySituation.situationTagId
-     WHERE
-       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
-       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
-       AND
-       bySituation.postId <> posttag.postId
-       UNION ALL
-     SELECT
-       bySymptom.postId
-     FROM
-       posttag
-     INNER JOIN
-       posttag as bySymptom
-     ON
-       posttag.symptomTagId = bySymptom.symptomTagId
-     WHERE
-       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
-       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
-       AND
-       bySymptom.postId <> posttag.postId
-       UNION ALL
-     SELECT
-       byModel.postId
-     FROM
-       posttag
-     INNER JOIN
-       posttag as byModel
-     ON
-       posttag.modelTagId = byModel.modelTagId
-     WHERE
-       posttag.situationTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($situationsPicked))
-       AND posttag.symptomTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($symptomsPicked))
-       AND posttag.modelTagId IN (SELECT tagId FROM tags WHERE tagTextPhonetic IN ($modelsPicked))
-       AND
-       byModel.postId <> posttag.postId
-   ) as matches
- ON
-   posttag.postId = matches.postId
-   group by
-     posttag.postId,
-     posttag.situationTagId,
-     posttag.situationTagId,
-     posttag.modelTagId
-) as results
-order by
-  Relevance desc";
+//"SELECT postId, count(*) as Relevance FROM postSituation WHERE postId = '$row['postId']' AND situationTagId IN ($situationPicked)";
 
-/*$sqlPostId = "SELECT a.postId FROM posttag a INNER JOIN
-        (
-            SELECT  postId, COUNT(*) totalCount
-            FROM    posttag
-            WHERE tagId IN (SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked))
-            GROUP   BY postId
-        ) b ON  a.postId = b.postId
-            WHERE tagId IN (SELECT tagId FROM `tags` WHERE tagTextPhonetic IN($tagsPicked)) ORDER BY b.TotalCount DESC, a.tagId ASC"; */
+  $sqlPostIdAlt = "SELECT *
+FROM     `posttag`
+WHERE
+  $situationsPicked
 
-$sql = "SELECT accounts.username, posts.id, posts.titleText, posts.postText, posts.postId FROM accounts, posts WHERE posts.postId IN($sqlPostId) AND posts.id = accounts.id";
+  OR
+
+  $symptomsPicked
+
+  OR
+
+  $modelsPicked
+
+ORDER BY (
+  (
+    $situationsPicked
+  )
+  +
+  (
+    $symptomsPicked
+  )
+  +
+  (
+    $modelsPicked
+  )
+  )  DESC
+";
+
+
+
+$sql = "SELECT accounts.username, posts.id, posts.titleText, posts.postText, posts.postId FROM accounts, posts WHERE posts.postId IN($sqlPostIdAlt) AND posts.id = accounts.id";
 
 echo $sql;
 
