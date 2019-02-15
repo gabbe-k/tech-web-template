@@ -1,13 +1,14 @@
 $(document).ready(function() {
 
+
   $('#dropBtn').click(function(event) {
 
-    $('#header-exit-button').attr("disabled", "disabled");
     $("html, body").animate({ scrollTop: 0 }, "slow").promise().done(function() {
       $.scrollLock(true);
     });
 
-    $('.header-exit-button-wrap').addClass('header-exit-button-active');
+    $('#header-exit-button').attr("disabled", "disabled");
+
     $('.header-info-start').fadeOut(500);
     $('.header-info').addClass('animatable--now');
     $('.header-info').addClass('header-info-fullsize');
@@ -16,6 +17,7 @@ $(document).ready(function() {
     $('.header-info-pick-wrapper').removeClass('header-info-pick-wrapper-fold-in');
 
     $('#header-exit-button').fadeIn(500).promise().done(function() {
+      $('.header-exit-button-wrap').addClass('header-exit-button-active');
       $('.header-info-pick-wrapper').fadeIn(500);
       $('.header-info').removeClass('animatable--now');
       $('.header-info-pick-wrapper').removeClass('animatable--now');
