@@ -213,58 +213,205 @@
     .header-info-ask {
       width: 100%;
       height: 100%;
-      margin: 2rem;
-      display: grid;
-      grid-template-rows: .5fr 1fr;
+      margin: 3rem;
 
-      h1 {
-        text-align: center;
-        margin-top: 5rem;
-      }
 
-      #postForm {
+      .writepost-wrapper {
 
-        width: 100%;
-        height: 10rem;
-        display: inline-grid;
+        display: grid;
 
-        input[type=text], select {
-          width: 100%;
-          padding: .5rem .75rem;
-          margin: .25rem 0;
-          display: inline-block;
-          border: .125rem solid #ccc;
-          border-radius: .125rem;
-          box-sizing: border-box;
+        grid-template-rows: .625fr 1fr;
+
+        height: 100%;
+
+        h1 {
+          text-align: center;
+          font-size: 4rem;
         }
 
-        input[type=submit] {
+        h6 {
+          text-align: center;
+        }
+
+        .writepost-instructions {
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding: 2rem 0 1rem 0;
+        }
+
+        #postForm {
+
           width: 100%;
-          background-color: #4CAF50;
+          height: 10rem;
+          display: inline-grid;
+
+          #formfields {
+            width: 7.5rem;
+          }
+
+          input[type=text], select {
+            width: 100%;
+            padding: .5rem .75rem;
+            margin: .125rem 0;
+            display: inline-block;
+            border: .125rem solid $SecText;
+            background-color: $TextDarker;
+            border-radius: .125rem;
+            box-sizing: border-box;
+            outline: none;
+          }
+
+          input[type=button] {
+            @include headerbtn();
+            width: 100%;
+            background-color: $Accent;
+            color: white;
+            padding: .5rem .75rem;
+            margin: .125rem 0;
+            border: none;
+            border-radius: .25rem;
+            cursor: pointer;
+
+            outline: none;
+          }
+
+          input[type=button]:hover {
+            background-color: $AccentDark;
+          }
+
+          textarea {
+            width: 100%;
+            height: 10rem;
+            padding: .5rem .5rem;
+            box-sizing: border-box;
+            border: .125rem solid $SecText;
+            border-radius: .125rem;
+            background-color: $TextDarker;
+            resize: none;
+            margin: .125rem 0;
+            outline: none;
+          }
+
+        }
+
+      }
+
+      .addParams-wrapper {
+        width: 100%;
+        height: 90%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr repeat(3, .5fr);
+
+        h1 {
+          text-align: center;
+          font-size: 4rem;
+        }
+
+        h6 {
+          text-align: center;
+        }
+
+        #submitButton {
+          @include headerbtn();
+          width: 100%;
+          background-color: $Accent;
           color: white;
           padding: .5rem .75rem;
-          margin: .25rem 0;
           border: none;
           border-radius: .25rem;
           cursor: pointer;
+          outline: none;
         }
 
-        input[type=submit]:hover {
-          background-color: #45a049;
+        .param-instructions {
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding: 2rem 0 1rem 0;
         }
 
-        textarea {
-          width: 100%;
-          height: 5rem;
-          padding: .5rem .5rem;
-          box-sizing: border-box;
-          border: .125rem solid #ccc;
-          border-radius: .125rem;
-          background-color: #f8f8f8;
-          resize: none;
+        .param-wrapper:not(.param-instructions) {
+          background: $ThirdDark;
+
+          .param {
+            display: grid;
+            grid-template-columns: 1fr .2fr;
+            grid-template-rows: .3fr 1fr;
+            box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.4);
+
+            .param-info {
+              background: $SecDark2;
+              grid-column: 1/2;
+              box-shadow: 0 0.15rem 0 0 rgba(0,0,0,.4);
+              display: flex;
+              align-items: center;
+
+              h6 {
+                font-size: .8rem;
+                text-align: left;
+                margin-left: .2rem;
+                font-weight: 400;
+                color: $Text;
+              }
+            }
+
+            .param-add {
+              background: $SecDark2;
+              box-shadow: 0 0.15rem 0 0 rgba(0,0,0,.4);
+              grid-column: 2/3;
+              width: 100%;
+              height: 100%;
+
+              #param-add-form {
+
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input[type=text], select {
+                  width: 100%;
+                  height: 100%;
+                  border: none;
+                  background-color: $TextDarker;
+                  outline: none;
+                  font-size: .75rem;
+                  font-weight: 800;
+                  padding-left: 1.125rem;
+                  border-radius: .125rem;
+                  background-image: url('/img/round-search-24px.svg');
+                  background-position:  0 .1rem;
+                  background-size: 1.125rem;
+                  background-repeat: no-repeat;
+                }
+
+              }
+            }
+
+            .param-view {
+
+              text-align: center;
+              grid-column: 1/3;
+              grid-row: 2/3;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+            }
+          }
+
+          div {
+            height: 100%;
+            width: 100%;
+          }
+
         }
 
       }
+
     }
 
   }
@@ -294,7 +441,6 @@
   grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: .25rem;
   height: 100%;
-
 
   #tagviewer {
     display: inline-grid;
@@ -367,92 +513,92 @@
 
     }
 
-}
+  }
 
-.tagSearch-Wrapper {
+  .tagSearch-Wrapper {
 
-  box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
-  background: $Text;
-  width: 0rem;
-  min-height: 2rem;
-  max-height: auto;
-  opacity: 0;
-  border-radius: 0.2rem;
+    box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.2);
+    background: $Text;
+    width: 0rem;
+    min-height: 2rem;
+    max-height: auto;
+    opacity: 0;
+    border-radius: 0.2rem;
 
-    #tagSearch-Preview {
-      background: $Text;
-      z-index: 999;
-      display: grid;
-      grid-template-columns: 1fr;
-      position: absolute;
-      width: 7.5rem;
-      border-radius:  0 0 0.2rem 0.2rem;
+      #tagSearch-Preview {
+        background: $Text;
+        z-index: 999;
+        display: grid;
+        grid-template-columns: 1fr;
+        position: absolute;
+        width: 7.5rem;
+        border-radius:  0 0 0.2rem 0.2rem;
 
-        form {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
+          form {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
 
-          input { // BUG:
-            text-align: left;
-            margin-left: .2rem;
-            font-weight: 600;
-            font-size: .7rem;
-            width: 7.5rem;
-            height: 2rem;
-            border: none;
-            background: none;
-            outline: none;
-          }
-
-          &:hover{
-            opacity: 1;
-            input {
-              opacity: .6;
-              cursor: pointer;
+            input { // BUG:
+              text-align: left;
+              margin-left: .2rem;
+              font-weight: 600;
+              font-size: .7rem;
+              width: 7.5rem;
+              height: 2rem;
+              border: none;
+              background: none;
+              outline: none;
             }
-          }
 
-          &:active {
-          opacity: 1 !important;
-          input {
-            opacity: .4 !important;
+            &:hover{
+              opacity: 1;
+              input {
+                opacity: .6;
+                cursor: pointer;
+              }
+            }
+
+            &:active {
+            opacity: 1 !important;
+            input {
+              opacity: .4 !important;
+            }
+
           }
 
         }
 
-      }
-
-  }
-
-  #addTagForm {
-    @include formMix();
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
-    background: none;
-
-    input {
-      display: none;
-      padding-left: 0.2rem;
-      background: none;
-      font-size: 0.7rem;
-      font-weight: 600;
-      height: 2rem;
-      color: $Darkest;
     }
+
+    #addTagForm {
+      @include formMix();
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      box-shadow: 0 0.25rem 0 -.1rem rgba(0,0,0,.1);
+      background: none;
+
+      input {
+        display: none;
+        padding-left: 0.2rem;
+        background: none;
+        font-size: 0.7rem;
+        font-weight: 600;
+        height: 2rem;
+        color: $Darkest;
+      }
+    }
+
   }
 
-}
+    .buttonClicked {
+    transform: rotate(180deg);
+  }
 
-  .buttonClicked {
-  transform: rotate(180deg);
-}
-
-.buttonClickedTwo {
-transform: rotate(-180deg);
-}
+  .buttonClickedTwo {
+  transform: rotate(-180deg);
+  }
 
 }
 
