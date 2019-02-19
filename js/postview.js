@@ -20,8 +20,6 @@ $(document).ready(function() {
 
             $(document).click(function(event) {
 
-            window.console&&console.log(event.target);
-
             if(!$(event.target).is('#addTagForm-Input') && $(tagSearchWrapper).hasClass('isShown')) {
 
               $(addTags).addClass('animatable--now');

@@ -12,12 +12,15 @@
     $tag = preg_replace('/[^a-zA-Z0-9_]/', '', $tag);
     $tagMeta = metaphone($tag, 5);
 
-    $sql = "SELECT tagText FROM tags WHERE tagType = '$db' AND (tagTextPhonetic = '$tagMeta' OR tagTextPhonetic LIKE '$tagMeta%' OR tagTextPhonetic LIKE '%$tagMeta' OR tagText LIKE '%$tag%' OR '%$tag' OR '$tag%')";
+    $sql = "SELECT tagText FROM tags WHERE tagType = '$db'
+    AND (tagTextPhonetic = '$tagMeta' OR tagTextPhonetic LIKE '$tagMeta%'
+    OR tagTextPhonetic LIKE '%$tagMeta'
+    OR tagText LIKE '%$tag%' OR '%$tag' OR '$tag%')";
     $result = mysqli_query($conn, $sql);
     $resultLen = mysqli_num_rows($result);
 
     if ($resultLen == 0) {
-      echo "";
+      echo "No result";
     }
 
     else {
@@ -36,6 +39,7 @@
     }
 
   }
+
 
 
 

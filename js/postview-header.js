@@ -1,25 +1,53 @@
+$(document).ready(function() {
 
-  function searchSit() {
+  $('.header-wrap').click(function(event) {
 
-    $( "#addTagForm-Input" ).focus(function() {
-      //needs fixing for universal
+
+      if ($(event.target).is('#addTagForm-Input')) {
+
+        var tagInput = event.target;
+        var hiddenInput = $(event.target).next();
+
+        $(tagInput).keyup(function() {
+          var searchTxt = $(tagInput).val();
+          var dbValue = $(hiddenInput).val();
+          console.log(searchTxt);
+          searchQ(tagInput, searchTxt, dbValue);
+        });
+
+        $(tagInput).keydown(function() {
+          var searchTxt = $(tagInput).val();
+          var dbValue = $(hiddenInput).val();
+          console.log(tagInput);
+          searchQ(tagInput, searchTxt, dbValue);
+        });
+
+      }
+
     });
 
-    var searchTxt = $("input[name='sitSearch']").val();
-    $('#tagSearch-Preview').addClass('animatable--now');
+  });
 
-    $.post("../sql/sqscantags.php",  {searchVal: searchTxt, dbSearch: "1"}, function(output) {
+  function searchQ(element, searchTxt, dbValue) {
+
+    var searchTxt = $(element).val();
+    var tagSearchWrapper = $(element).parent().parent();
+    var tagSearchPreview = $(element).parent().next();
+
+    $(tagSearchPreview).addClass('animatable--now');
+
+    $.post("../sql/sqscantags.php",  {searchVal: searchTxt, dbSearch: dbValue}, function(output) {
 
       if (output == "") {
-        $('.tagSearch-Wrapper').removeClass('tagSearch-Wrapper-Border');
-        $('#tagSearch-Preview').removeClass('animatable--now');
+        $(tagSearchWrapper).removeClass('tagSearch-Wrapper-Border');
+        $(tagSearchPreview).removeClass('animatable--now');
       }
       else {
-        $('.tagSearch-Wrapper').addClass('tagSearch-Wrapper-Border');
+        $(tagSearchWrapper).addClass('tagSearch-Wrapper-Border');
       }
 
 
-      $("#tagSearch-Preview").html(output);
+      $(tagSearchPreview).html(output);
 
     });
 

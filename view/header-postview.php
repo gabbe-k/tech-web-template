@@ -19,7 +19,8 @@
             </div>
             <div class="tagSearch-Wrapper">
               <form id="addTagForm" action="../sql/sqaddsituation.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="sitSearch" placeholder="Add situations..." onkeyup="searchSit();" onkeydown="searchSit();"/>
+                <input id="addTagForm-Input" type="text" name="sitSearch" placeholder="Add situations..."/>
+                <input type="hidden" value="1" name = "hidden">
               </form>
               <div id="tagSearch-Preview">
 
@@ -39,7 +40,8 @@
             </div>
             <div class="tagSearch-Wrapper">
               <form id="addTagForm" action="../sql/sqaddsymptom.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="symSearch" placeholder="Add symptoms..." onkeyup="searchSym();" onkeydown="searchSym();"/>
+                <input id="addTagForm-Input" type="text" name="symSearch" placeholder="Add symptoms..."/>
+                <input type="hidden" value="2" name = "hidden">
               </form>
               <div id="tagSearch-Preview">
 
@@ -59,7 +61,8 @@
             </div>
             <div class="tagSearch-Wrapper">
               <form id="addTagForm" action="../sql/sqaddmodel.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="modSearch" placeholder="Add model names..." onkeyup="searchMod();" onkeydown="searchMod();"/>
+                <input id="addTagForm-Input" type="text" name="modSearch" placeholder="Add model names..."/>
+                <input type="hidden" value="3" name = "hidden">
               </form>
               <div id="tagSearch-Preview">
 
