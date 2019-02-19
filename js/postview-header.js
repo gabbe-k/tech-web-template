@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   });
 
-  function searchQ(element, searchTxt, dbValue) {
+  export function searchQ(element, searchTxt, dbValue) {
 
     var searchTxt = $(element).val();
     var tagSearchWrapper = $(element).parent().parent();

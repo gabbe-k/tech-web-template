@@ -1,3 +1,7 @@
+import postview-header from "./postview-header";
+
+import {searchQ} from './postview-header';
+
 $(document).ready(function() {
 
   $("#continueButton").click(function() {
