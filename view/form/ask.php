@@ -66,10 +66,10 @@
                 <input type="text" name="param" id="paramAdd-Input" placeholder="Search symptom tags...">
                 <input type="hidden" value="1">
               </form>
-            </div>
-                          <div id="addParams-Preview">
+              <div id="addParams-Preview">
 
-                          </div>
+              </div>
+            </div> 
           </div>
 
           <div class="param-view">

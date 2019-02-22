@@ -29,7 +29,7 @@
           $row = mysqli_fetch_assoc($result);
         ?>
 
-          <form class="" action="../sql/sqaddtags.php" method="post">
+          <form action="../sql/sqaddtags.php" method="post">
             <input type="submit" name="suggText" value="<?php  echo $row['tagText'];  ?>">
           </form>
 
