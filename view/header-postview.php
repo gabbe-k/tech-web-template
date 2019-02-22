@@ -1,4 +1,4 @@
-<script type="text/javascript" src="./js/postview-header.js"></script>
+<script type="module" src="./js/postview-header.js"></script>
 
 <div class="header-info-start">
   <div class="header-info-title">

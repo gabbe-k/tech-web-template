@@ -1,6 +1,3 @@
-import postview-header from "./postview-header";
-
-import {searchQ} from './postview-header';
 
 $(document).ready(function() {
 
@@ -12,5 +9,31 @@ $(document).ready(function() {
   $("#submitButton").click(function() {
       $("#postForm").submit();
   });
+
+  $('.header-wrap').click(function(event) {
+
+
+      if ($(event.target).is('#paramAdd-Input')) {
+
+        var tagInput = event.target;
+        var hiddenInput = $(event.target).next();
+
+        $(tagInput).keyup(function() {
+          var searchTxt = $(tagInput).val();
+          var dbValue = $(hiddenInput).val();
+          console.log(searchTxt);
+          searchQ(tagInput, searchTxt, dbValue);
+        });
+
+        $(tagInput).keydown(function() {
+          var searchTxt = $(tagInput).val();
+          var dbValue = $(hiddenInput).val();
+          console.log(tagInput);
+          searchQ(tagInput, searchTxt, dbValue);
+        });
+
+      }
+
+    });
 
 });

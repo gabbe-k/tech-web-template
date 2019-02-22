@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 
   $('.header-wrap').click(function(event) {
@@ -28,7 +30,7 @@ $(document).ready(function() {
 
   });
 
-  export function searchQ(element, searchTxt, dbValue) {
+  function searchQ(element, searchTxt, dbValue) {
 
     var searchTxt = $(element).val();
     var tagSearchWrapper = $(element).parent().parent();
@@ -52,49 +54,3 @@ $(document).ready(function() {
     });
 
   }
-
-  function searchSym() {
-
-    var searchTxt = $("input[name='symSearch']").val();
-    $('#tagSearch-Preview').addClass('animatable--now');
-
-    window.console&&console.log(searchTxt);
-
-    $.post("../sql/sqscantags.php",  {searchVal: searchTxt, dbSearch: "2"}, function(output) {
-
-      if (output == "") {
-        $('.tagSearch-Wrapper').removeClass('tagSearch-Wrapper-Border');
-        $('#tagSearch-Preview').removeClass('animatable--now');
-      }
-      else {
-        $('.tagSearch-Wrapper').addClass('tagSearch-Wrapper-Border');
-      }
-
-
-      $("#tagSearch-Preview").html(output);
-
-    });
-
-  }
-
-function searchMod() {
-
-  var searchTxt = $("input[name='modSearch']").val();
-  $('#tagSearch-Preview').addClass('animatable--now');
-
-  $.post("../sql/sqscantags.php",  {searchVal: searchTxt, dbSearch: "3"}, function(output) {
-
-    if (output == "") {
-      $('.tagSearch-Wrapper').removeClass('tagSearch-Wrapper-Border');
-      $('#tagSearch-Preview').removeClass('animatable--now');
-    }
-    else {
-      $('.tagSearch-Wrapper').addClass('tagSearch-Wrapper-Border');
-    }
-
-
-    $("#tagSearch-Preview").html(output);
-
-  });
-
-}

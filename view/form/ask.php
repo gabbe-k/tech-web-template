@@ -1,3 +1,7 @@
+<script type="text/javascript" src="./js/postview-header.js"></script>
+<script type="text/javascript" src="./js/ask.js"></script>
+
+
 <div class="header-info-ask-outer">
 
   <div class="header-info-ask">
@@ -57,9 +61,15 @@
           </div>
 
           <div class="param-add">
-            <form id="param-add-form" action="index.html" method="post">
-              <input type="text" name="param" placeholder="Search symptom tags...">
-            </form>
+            <div class="tagSearch-Wrapper">
+              <form id="param-add-form" action="index.html" method="post">
+                <input type="text" name="param" id="paramAdd-Input" placeholder="Search symptom tags...">
+                <input type="hidden" value="1">
+              </form>
+            </div>
+                          <div id="addParams-Preview">
+
+                          </div>
           </div>
 
           <div class="param-view">
@@ -79,9 +89,15 @@
           </div>
 
           <div class="param-add">
-            <form id="param-add-form" action="index.html" method="post">
-              <input type="text" name="param" placeholder="Search situation tags...">
-            </form>
+            <div class="tagSearch-Wrapper">
+              <form id="param-add-form" action="index.html" method="post">
+                <input type="text" name="param" id="paramAdd-Input" placeholder="Search symptom tags...">
+                <input type="hidden" value="2">
+              </form>
+              <div id="addParams-Preview">
+
+              </div>
+            </div>
           </div>
 
           <div class="param-view">
@@ -101,9 +117,15 @@
           </div>
 
           <div class="param-add">
-            <form id="param-add-form" action="index.html" method="post">
-              <input type="text" name="param" placeholder="Search model tags...">
-            </form>
+            <div class="tagSearch-Wrapper">
+              <form id="param-add-form" action="index.html" method="post">
+                <input type="text" name="param" id="paramAdd-Input" placeholder="Search symptom tags...">
+                <input type="hidden" value="3">
+              </form>
+              <div id="addParams-Preview">
+
+              </div>
+            </div>
           </div>
 
           <div class="param-view">

@@ -473,9 +473,10 @@ html {
   color: white;
   padding: 0.5rem 0.75rem;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0 0 0.25rem 0.25rem !important;
   cursor: pointer;
   outline: none;
+  z-index: 998 !important;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper #submitButton:focus {
   border: none;
@@ -494,14 +495,12 @@ html {
   justify-content: center;
   padding: 2rem 0 1rem 0;
 }
-.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) {
-  background: #111111;
-}
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param {
   display: grid;
   grid-template-columns: 1fr 0.2fr;
   grid-template-rows: 0.3fr 1fr;
   box-shadow: 0 0.25rem 0 -0.1rem rgba(0, 0, 0, 0.4);
+  height: 5rem;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-info {
   background: #172353;
@@ -509,6 +508,7 @@ html {
   box-shadow: 0 0.15rem 0 0 rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
+  height: 1.1rem;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-info h6 {
   font-size: 0.8rem;
@@ -521,15 +521,17 @@ html {
   background: #172353;
   box-shadow: 0 0.15rem 0 0 rgba(0, 0, 0, 0.4);
   grid-column: 2/3;
+  grid-row: 1/2;
   width: 100%;
   height: 100%;
 }
-.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-add #param-add-form {
+.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-add .param-add-form-wrap {
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-add #param-add-form {
+  height: 1.1rem;
+  width: 100%;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-add #param-add-form input[type=text], .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-add #param-add-form select {
   width: 100%;
@@ -547,6 +549,7 @@ html {
   background-repeat: no-repeat;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) .param .param-view {
+  background: #111111;
   text-align: center;
   grid-column: 1/3;
   grid-row: 2/3;
@@ -554,9 +557,45 @@ html {
   justify-content: center;
   align-items: center;
 }
-.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper .param-wrapper:not(.param-instructions) div {
-  height: 100%;
+
+#addParams-Preview {
+  background: #EDEDED;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: absolute;
   width: 100%;
+  height: auto !important;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+#addParams-Preview form {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#addParams-Preview form input {
+  text-align: left;
+  margin-left: 0.2rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  width: 7.5rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+#addParams-Preview form:hover {
+  opacity: 1;
+}
+#addParams-Preview form:hover input {
+  opacity: 0.6;
+  cursor: pointer;
+}
+#addParams-Preview form:active {
+  opacity: 1 !important;
+}
+#addParams-Preview form:active input {
+  opacity: 0.4 !important;
 }
 
 .header-info-answer-wrapper {
