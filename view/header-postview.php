@@ -11,15 +11,15 @@
         <div id="tagviewer">
 
             <?php
-               PrintSituation();
+               PrintTags("1");
              ?>
 
             <div id="addDiv">
               <button type="button" name="button" id="addTags"></button>
             </div>
             <div class="tagSearch-Wrapper">
-              <form id="addTagForm" action="../sql/sqaddsituation.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="sitSearch" placeholder="Add situations..."/>
+              <form id="addTagForm" action="../sql/sqaddtags.php" method="post" autocomplete="off">
+                <input id="addTagForm-Input" type="text" name="tagText" placeholder="Add situations..."/>
                 <input type="hidden" value="1" name = "hidden">
               </form>
               <div id="tagSearch-Preview">
@@ -32,15 +32,15 @@
         <div id="tagviewer">
 
             <?php
-               PrintSymptom();
+               PrintTags("2");
              ?>
 
             <div id="addDiv">
               <button type="button" name="button" id="addTags"></button>
             </div>
             <div class="tagSearch-Wrapper">
-              <form id="addTagForm" action="../sql/sqaddsymptom.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="symSearch" placeholder="Add symptoms..."/>
+              <form id="addTagForm" action="../sql/sqaddtags.php" method="post" autocomplete="off">
+                <input id="addTagForm-Input" type="text" name="tagText" placeholder="Add symptoms..."/>
                 <input type="hidden" value="2" name = "hidden">
               </form>
               <div id="tagSearch-Preview">
@@ -53,15 +53,15 @@
         <div id="tagviewer">
 
             <?php
-               PrintModel();
+               PrintTags("3");
              ?>
 
             <div id="addDiv">
               <button type="button" name="button" id="addTags"></button>
             </div>
             <div class="tagSearch-Wrapper">
-              <form id="addTagForm" action="../sql/sqaddmodel.php" method="post" autocomplete="off">
-                <input id="addTagForm-Input" type="text" name="modSearch" placeholder="Add model names..."/>
+              <form id="addTagForm" action="../sql/sqaddtags.php" method="post" autocomplete="off">
+                <input id="addTagForm-Input" type="text" name="tagText" placeholder="Add model names..."/>
                 <input type="hidden" value="3" name = "hidden">
               </form>
               <div id="tagSearch-Preview">

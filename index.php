@@ -3,6 +3,7 @@
   //  include('convertAllPhonetic.php');
     session_start();
   ///  TagsToMetaPhone();
+    require_once('sqlprint/prtags.php');
  ?>
 <html lang="en" dir="ltr">
 

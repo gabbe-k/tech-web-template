@@ -8,15 +8,49 @@
 
   $conn = Connect();
 
-  if (isset($_POST['suggText'])) {
+  if (isset($_POST['tagText'])) {
 
-    $tag = metaphone($_POST['suggText'], 5);
+    $dbName = "";
 
-    if (isset($_SESSION['modelText']) && array_search($tag, $_SESSION['modelText']) !== false) {
+    switch ($_POST['hidden']) {
+
+      case '1':
+        $dbName = "situationText";
+        break;
+
+      case '2':
+        $dbName = "symptomText";
+        break;
+
+      case '3':
+        $dbName = "modelText";
+        break;
+
+      case '4':
+        $dbName = "situationPost";
+        break;
+
+      case '5':
+        $dbName = "symptomPost";
+        break;
+
+      case '6':
+        $dbName = "modelPost";
+        break;
+
+
+      default:
+        // code...
+        break;
+    }
+
+    $tag = metaphone(ClearTags($conn, $_POST['tagText']), 5);
+
+    if (isset($_SESSION[$dbName]) && array_search($tag, $_SESSION[$dbName]) !== false) {
       header("Location: ../postview.php?tagdupe");
     }
     else {
-      $_SESSION['modelText'][] = $tag;
+      $_SESSION[$dbName][] = $tag;
       header("Location: ../postview.php?addedtag");
     }
     Disconnect($conn);
@@ -31,15 +65,14 @@
 
     $tag = metaphone($tag, 5);
 
-    if (isset($_SESSION['modelText']) && array_search($tag, $_SESSION['modelText']) !== false) {
+    if (isset($_SESSION[$dbName]) && array_search($tag, $_SESSION[$dbName]) !== false) {
         echo "already have";
         header("Location: ../postview.php?tagdupe");
         exit();
     }
     else {
-    //här ska vi inte visa en ofärdig tagg
 
-        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%' AND tagType = '3'";
+        $sql = "SELECT tagText FROM tags WHERE tagTextPhonetic LIKE '%$tag%' AND tagType = '1'";
         $result = mysqli_query($conn, $sql);
         $resultLen = mysqli_num_rows($result);
 
@@ -48,7 +81,7 @@
           exit();
         }
         else {
-          $_SESSION['modelText'][] = $tag;
+          $_SESSION[$dbName][] = $tag;
           echo "added tag: " . $tag;
         }
 
@@ -59,6 +92,7 @@
 
   }
   else {
+    echo $_POST['tagText'];
     header("Location: ../postview.php?emptyform");
     Disconnect($conn);
     exit();
@@ -66,9 +100,9 @@
 
   /*
   not work atm
-    for ($i=0; $i < count($_SESSION['modelText']); $i++) {
+    for ($i=0; $i < count($_SESSION['tagText']); $i++) {
 
-      $tmp = $_SESSION['tagText'][$i];
+      $tmp = $_SESSION['situationText'][$i];
 
       if (count($_SESSION['tagText']) == 1 || $i == count($_SESSION['tagText']) - 1) {
         $tagsPicked = $tagsPicked . "\"" . $tmp . "\"";

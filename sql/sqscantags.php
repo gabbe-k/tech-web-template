@@ -22,7 +22,6 @@
     if ($resultLen == 0) {
       echo "No result";
     }
-
     else {
 
       for ($i=0; $i < $resultLen; $i++) {
@@ -30,7 +29,8 @@
         ?>
 
           <form action="../sql/sqaddtags.php" method="post">
-            <input type="submit" name="suggText" value="<?php  echo $row['tagText'];  ?>">
+            <input type="submit" name="tagText" value="<?php  echo $row['tagText'];  ?>">
+            <input type="hidden" name="hidden" value="<?php  echo $db  ?>">
           </form>
 
         <?php

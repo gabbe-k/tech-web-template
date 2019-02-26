@@ -36,8 +36,6 @@
 
   }
 
-
-
   require_once('sqconnect.php');
   require_once('data_valid.php');
 

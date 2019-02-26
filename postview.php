@@ -2,9 +2,7 @@
 <?php
     session_start();
     require_once('sqlprint/prposts.php');
-    require_once('sqlprint/prsymptom.php');
-    require_once('sqlprint/prsituation.php');
-    require_once('sqlprint/prmodel.php');
+    require_once('sqlprint/prtags.php');
  ?>
 <html lang="en" dir="ltr">
 
