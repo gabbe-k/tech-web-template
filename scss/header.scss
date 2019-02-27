@@ -198,7 +198,6 @@
   display: none;
   @include border();
   background: $SecDark;
-  display: none;
   width: 100%;
   height: 90vh;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.9);
@@ -262,7 +261,7 @@
             outline: none;
           }
 
-          input[type=button] {
+          input[type=submit] {
             @include headerbtn();
             width: 100%;
             background-color: $Accent;
@@ -313,7 +312,7 @@
           text-align: center;
         }
 
-        #submitButton {
+        #continueButton {
           @include headerbtn();
           width: 100%;
           background-color: $Accent;
@@ -405,8 +404,32 @@
               justify-content: center;
               align-items: center;
 
-              .param-picked {
-                
+              a  {
+
+                @include buttonMix();
+
+                height: 2rem;
+                border-radius: 0.15rem;
+                background: $PrimDark;
+                padding: 0 0.5rem 0 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: .25rem;
+
+                &:hover {
+                  opacity: 0.6;
+                }
+
+                &:active {
+                  opacity: 0;
+                  cursor: default;
+                }
+
+                text-decoration: none;
+                color: $Text;
+                font: 1rem Helvetica, Verdana, sans-serif;
+
               }
 
             }
@@ -473,7 +496,6 @@
   display: none;
   @include border();
   background: $SecDark;
-  display: none;
   width: 100%;
   height: 90vh;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.9);

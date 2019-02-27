@@ -2,29 +2,70 @@
 
   function InsertTag($tagArrArr, $conn, $string, $postId) {
 
-    $tagArr = array();
+    $tagSit = array();
+    $tagSym = array();
+    $tagMod = array();
 
       for ($j=0; $j < 3; $j++) {
 
-        for ($i=0; $i < 1; $i++) {
+        for ($i=0; $i < count($tagArrArr[$j]); $i++) {
 
-          echo $tagArrArr[$j][0];
+          $tag= $tagArrArr[$j][$i];
 
-          $result = mysqli_query($conn, "SELECT * FROM tags WHERE tagText='$tagArrArr[$j][0]'");
+          $result = mysqli_query($conn, "SELECT * FROM tags WHERE tagTextPhonetic='$tag'");
+
           $resultLen = mysqli_num_rows($result);
 
-          if ($resultLen > 0) {
+          if ($resultLen == 0) {
 
-              $row = mysqli_fetch_assoc($result);
-              $tagArr[$j] = $row['tagText'];
-              //$conn->query("INSERT INTO posttag (postId, '$string') VALUES ('$postId', '')");
+            $tagId = DupeSearch($conn, "tags", "tagId");
+
+            switch ($j) {
+              case '1':
+                $tagSit[] = $tagId;
+                break;
+
+              case '2':
+                $tagSym[] = $tagId;
+                break;
+
+              case '3':
+                $tagMod[] = $tagId;
+                break;
+
+              default:
+                // code...
+                break;
+            }
+
+            $tagPhonetic = metaphone($tagArrArr[$j][$i]);
+            $tagType = $j;
+
+            echo $tagArrArr[$j][$i];
+
+            $conn->query("INSERT INTO tags (tagId, tagText, tagTextPhonetic, tagType) VALUES ('$tagId', '$tagArrArr[$j][$i]', $tagPhonetic, $tagType)");
 
           }
           else {
+            $row = mysqli_fetch_assoc($result);
 
-            $tagId = DupeSearch($conn, "tags", "tagId");
-            $tagArr[$j] = $row['tagText'];
-            $conn->query("INSERT INTO tags (tagText, tagId) VALUES ('$tagArrArr[$j][$i]', '$tagId')");
+            switch ($j) {
+              case '1':
+                $tagSit[] = $row['tagId'];
+                break;
+
+              case '2':
+                $tagSym[] = $row['tagId'];
+                break;
+
+              case '3':
+                $tagMod[] = $row['tagId'];
+                break;
+
+              default:
+                // code...
+                break;
+            }
 
           }
 
@@ -32,9 +73,17 @@
 
       }
 
-    $conn->query("INSERT INTO posttag (postId, situationTagId, symptomTagId, modelTagId) VALUES ('$postId', '$tagArr[0]', '$tagArr[1]', '$tagArr[2]')");
+    $tagSitStr = implode($tagSit, ',');
+    $tagSymStr = implode($tagSym, ',');
+    $tagModStr = implode($tagMod, ',');
+
+    $conn->query("INSERT INTO posttag (postId, situationTagId, symptomTagId, modelTagId) VALUES ('$postId', '$tagSitStr', '$tagSymStr', '$tagModStr')");
 
   }
+
+
+
+
 
   require_once('sqconnect.php');
   require_once('data_valid.php');
@@ -46,31 +95,40 @@
   $usr = ClearTags($conn, $_SESSION['u_user']);
   $id = ClearTags($conn, $_SESSION['u_id']);
 
-  $description = ClearTags($conn, $_POST['description']);
-  $title = ClearTags($conn, $_POST['title']);
+  if ($_POST['description'] == "" || $_POST['title'] == "") {
 
-  $situation = ClearTags($conn, $_POST['situation']);
-  $symptom = ClearTags($conn, $_POST['symptom']);
-  $model = ClearTags($conn, $_POST['model']);
+    header("Location: ../index.php?emptyf");
 
-  $postId = DupeSearch($conn, "posts", "postId");
+  }
+  else {
 
-  $situationArr = explode(',', $situation);
-  $symptomArr = explode(',', $symptom);
-  $modelArr = explode(',', $model);
+    $description = ClearTags($conn, $_POST['description']);
+    $title = ClearTags($conn, $_POST['title']);
 
-  $tagArrArr=array
-    (
-      $situationArr,
-      $symptomArr,
-      $modelArr
-    );
+    $situation = $_SESSION['situationPost'];
+    $symptom = $_SESSION['symptomPost'];
+    $model = $_SESSION['modelPost'];
 
-    print_r($tagArrArr);
+    $tagArrArr=array
+      (
+        $situation,
+        $symptom,
+        $model
+      );
 
-  InsertTag($tagArrArr, $conn, "situationTagId", $postId);
+    $postId = DupeSearch($conn, "posts", "postId");
 
-  $conn->query("INSERT INTO posts (id, titleText, postText, postId) VALUES ('$id', '$title', '$description', '$postId')");
+    InsertTag($tagArrArr, $conn, "situationTagId", $postId);
 
-  Disconnect($conn);
+    $sql = "INSERT INTO posts (id, titleText, postText, postId, postTextPhonetic, titleTextPhonetic) VALUES ('$id', '$title', '$description', '$postId')";
+
+    mysqli_query($conn, $sql);
+
+    echo "INSERT INTO posts (id, titleText, postText, postId) VALUES ('$id', '$title', '$description', '$postId')";
+
+
+
+    Disconnect($conn);
+
+  }
  ?>

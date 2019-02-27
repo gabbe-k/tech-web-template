@@ -14,6 +14,13 @@
 
     $_SESSION[$dbName] = $tagsArray;
 
-    header("Location: ../postview.php?removedtag");
+    if ($dbName == '1' || $dbName == '2' || $dbName == '3') {
+      header("Location: ../postview.php?removedtag");
+    }
+    else {
+      header("Location: ../index.php?rmvdtg");
+    }
+
+
 
  ?>

@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('.header-wrap').click(function(event) {
 
 
-      if ($(event.target).is('#addTagForm-Input')) {
+      if ($(event.target).is('#addTagForm-Input') || $(event.target).is('#paramAdd-Input')) {
 
         var tagInput = event.target;
         var hiddenInput = $(event.target).next();

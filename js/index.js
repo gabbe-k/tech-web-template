@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  var pathname = window.location.href;
+
 
   $('#dropBtn').click(function(event) {
 
@@ -30,11 +32,50 @@ $(document).ready(function() {
 
   });
 
+
+
+
+
+  if (pathname.slice(-6)==='addtag' || pathname.slice(-6)==='tgdupe' ||
+    pathname.slice(-6)==='unknwn' || pathname.slice(-6)==='emptyf' || pathname.slice(-6)==='rmvdtg'){
+
+      $("html, body").animate({ scrollTop: 0 }, "slow").promise().done(function() {
+        $.scrollLock(true);
+      });
+
+      $('#header-exit-button').attr("disabled", "disabled");
+      $('.header-info').addClass('header-info-fullsize');
+      $('.header-info-start').fadeOut();
+      $('.header-info-pick-wrapper').fadeOut();
+      $('.header-info-wrapper').addClass('header-info-fullsize');
+      $('.header-info-ask-wrapper').fadeIn(100);
+
+      $('#header-exit-button').fadeIn(0).promise().done(function() {
+        $('.header-exit-button-wrap').addClass('header-exit-button-active');
+        $('#header-exit-button').removeAttr("disabled", "disabled");
+      });
+
+      $(".writepost-wrapper").fadeOut(0);
+      $(".addParams-wrapper").fadeIn(0);
+
+      $('#header-exit-button').click(function(event) {
+
+        location.href = location.href.split('?')[0];
+
+      });
+
+  }
+
+
+
+
+
   $('#header-exit-button').click(function(event) {
 
     setTimeout(function() {
 
         $.scrollLock(true);
+
         $('.header-exit-button-wrap').removeClass('header-exit-button-active');
         $('.header-info-pick-wrapper').fadeOut(500);
         $('.header-info-ask-wrapper').fadeOut(500);
@@ -51,6 +92,8 @@ $(document).ready(function() {
         $('.header-info-start').fadeIn(500);
         $('#dropBtn').fadeIn(500);
         $.scrollLock(false);
+        $(".writepost-wrapper").fadeOut(0);
+        $(".addParams-wrapper").fadeIn(0);
 
       });
 

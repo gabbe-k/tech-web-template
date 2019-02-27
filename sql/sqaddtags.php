@@ -11,6 +11,7 @@
   if (isset($_POST['tagText'])) {
 
     $dbName = "";
+    $location = "Location: ../";
 
     switch ($_POST['hidden']) {
 
@@ -38,6 +39,13 @@
         $dbName = "modelPost";
         break;
 
+      case ($_POST['hidden'] == '1' || $_POST['hidden'] == '2' || $_POST['hidden'] == '3'):
+        $location = $location . "postview.php";
+        break;
+
+      case ($_POST['hidden'] == '4' || $_POST['hidden'] == '5' || $_POST['hidden'] == '6'):
+        $location = $location . "index.php";
+        break;
 
       default:
         // code...
@@ -47,11 +55,11 @@
     $tag = metaphone(ClearTags($conn, $_POST['tagText']), 5);
 
     if (isset($_SESSION[$dbName]) && array_search($tag, $_SESSION[$dbName]) !== false) {
-      header("Location: ../postview.php?tagdupe");
+      header($location . "?tgdupe");
     }
     else {
       $_SESSION[$dbName][] = $tag;
-      header("Location: ../postview.php?addedtag");
+      header($location . "?addtag");
     }
     Disconnect($conn);
     exit();
@@ -67,7 +75,7 @@
 
     if (isset($_SESSION[$dbName]) && array_search($tag, $_SESSION[$dbName]) !== false) {
         echo "already have";
-        header("Location: ../postview.php?tagdupe");
+        header($location . "?tgdupe");
         exit();
     }
     else {
@@ -77,7 +85,7 @@
         $resultLen = mysqli_num_rows($result);
 
         if ($resultLen == 0) {
-          header("Location: ../postview.php?unknown");
+          header($location . "?unknwn");
           exit();
         }
         else {
@@ -85,7 +93,7 @@
           echo "added tag: " . $tag;
         }
 
-        header("Location: ../postview.php?addedtag");
+        header($location . "?addtag");
         Disconnect($conn);
         exit();
     }
@@ -93,7 +101,7 @@
   }
   else {
     echo $_POST['tagText'];
-    header("Location: ../postview.php?emptyform");
+    header($location . "?emptyf");
     Disconnect($conn);
     exit();
   }

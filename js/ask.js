@@ -2,12 +2,8 @@
 $(document).ready(function() {
 
   $("#continueButton").click(function() {
-      $(".writepost-wrapper").fadeOut(200);
-      $(".addParams-wrapper").fadeIn(200);
-  });
-
-  $("#submitButton").click(function() {
-      $("#postForm").submit();
+      $(".writepost-wrapper").fadeIn(200);
+      $(".addParams-wrapper").fadeOut(200);
   });
 
   $('.header-wrap').click(function(event) {
@@ -34,6 +30,12 @@ $(document).ready(function() {
 
       }
 
+    });
+
+    $('#submitButton').click(function(event) {
+
+      $('#header-exit-button').click();
+      location.href = location.href.split('?')[0];
     });
 
 });
