@@ -33,11 +33,10 @@ $(document).ready(function() {
   });
 
 
+  console.log(pathname.slice(-12)==='x.php?rmvdtg');
 
-
-
-  if (pathname.slice(-6)==='addtag' || pathname.slice(-6)==='tgdupe' ||
-    pathname.slice(-6)==='unknwn' || pathname.slice(-6)==='emptyf' || pathname.slice(-6)==='rmvdtg'){
+  if (pathname.slice(-12)==='x.php?addtag' || pathname.slice(-12)==='x.php?tgdupe' ||
+    pathname.slice(-12)==='x.php?unknwn' || pathname.slice(-12)==='x.php?emptyf' || pathname.slice(-12)==='x.php?rmvdtg'){
 
       $("html, body").animate({ scrollTop: 0 }, "slow").promise().done(function() {
         $.scrollLock(true);

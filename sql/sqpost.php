@@ -120,13 +120,12 @@
 
     InsertTag($tagArrArr, $conn, "situationTagId", $postId);
 
-    $sql = "INSERT INTO posts (id, titleText, postText, postId, postTextPhonetic, titleTextPhonetic) VALUES ('$id', '$title', '$description', '$postId')";
+    $titlePhon = metaphone($title);
+    $descPhon = metaphone($description);
+
+    $sql = "INSERT INTO posts (id, titleText, postText, postId, postTextPhonetic, titleTextPhonetic) VALUES ('$id', '$title', '$description', '$postId', '$titlePhon', '$descPhon')";
 
     mysqli_query($conn, $sql);
-
-    echo "INSERT INTO posts (id, titleText, postText, postId) VALUES ('$id', '$title', '$description', '$postId')";
-
-
 
     Disconnect($conn);
 
