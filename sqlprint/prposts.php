@@ -74,13 +74,14 @@ function PrintPosts() {
 
   $boolValid = true;
 
-  if(isset($_SESSION['situationText']) && isset($_SESSION['situationText']) && isset($_SESSION['situationText'])) {
+  if(isset($_SESSION['situationText']) && isset($_SESSION['symptomText']) && isset($_SESSION['modelText'])
+    && count($_SESSION['situationText']) > 0 && count($_SESSION['symptomText']) > 0 && count($_SESSION['modelText']) > 0 ) {
 
     $situationsPicked = CreateLike(GetTags($_SESSION['situationText']), "situationTagId");
     $symptomsPicked = CreateLike(GetTags($_SESSION['symptomText']), "symptomTagId");
     $modelsPicked = CreateLike(GetTags($_SESSION['modelText']), "modelTagId");
 
-    $sqlPostIdAlt = "SELECT *
+    $sqlPostIdAlt = "SELECT postId
       FROM     `posttag`
       WHERE
         $situationsPicked
@@ -173,7 +174,7 @@ function PrintPosts() {
     }
     else {
       ?>
-      <h6>Please select values for all parameters</h6>
+      <p>Please select values for all parameters</p>
       <?php
     }
 

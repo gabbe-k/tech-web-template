@@ -60,7 +60,7 @@
           $row = mysqli_fetch_assoc($result);
             ?>
             <div>
-                <a href="../sqlprint/prremovetag.php?tag=<?php echo $tagsArray[$i]; ?>&dbName=<?php echo $dbName ?>">
+                <a href="../sqlprint/prremovetag.php?tag=<?php echo $tagsArray[$i]; ?>&dbVal=<?php echo $dbValue ?>&dbName=<?php echo $dbName ?>">
                     <?php
                     echo $row['tagText'];
                     ?>

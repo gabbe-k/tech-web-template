@@ -32,10 +32,4 @@ $(document).ready(function() {
 
     });
 
-    $('#submitButton').click(function(event) {
-
-      $('#header-exit-button').click();
-      location.href = location.href.split('?')[0];
-    });
-
 });

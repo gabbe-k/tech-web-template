@@ -20,7 +20,7 @@
 
             $tagId = DupeSearch($conn, "tags", "tagId");
 
-            switch ($j) {
+            switch ($j + 1) {
               case '1':
                 $tagSit[] = $tagId;
                 break;
@@ -32,14 +32,10 @@
               case '3':
                 $tagMod[] = $tagId;
                 break;
-
-              default:
-                // code...
-                break;
             }
 
             $tagPhonetic = metaphone($tagArrArr[$j][$i]);
-            $tagType = $j;
+            $tagType = $j + 1;
 
             echo $tagArrArr[$j][$i];
 
@@ -49,7 +45,7 @@
           else {
             $row = mysqli_fetch_assoc($result);
 
-            switch ($j) {
+            switch ($j + 1) {
               case '1':
                 $tagSit[] = $row['tagId'];
                 break;
@@ -62,9 +58,6 @@
                 $tagMod[] = $row['tagId'];
                 break;
 
-              default:
-                // code...
-                break;
             }
 
           }
@@ -73,11 +66,13 @@
 
       }
 
-    $tagSitStr = implode($tagSit, ',');
-    $tagSymStr = implode($tagSym, ',');
-    $tagModStr = implode($tagMod, ',');
+    $tagSitStr = implode(',' , $tagSit);
+    $tagSymStr = implode(',' , $tagSym);
+    $tagModStr = implode(',' , $tagMod);
 
-    $conn->query("INSERT INTO posttag (postId, situationTagId, symptomTagId, modelTagId) VALUES ('$postId', '$tagSitStr', '$tagSymStr', '$tagModStr')");
+    $sql = "INSERT INTO posttag (postId, situationTagId, symptomTagId, modelTagId) VALUES ('$postId', '$tagSitStr', '$tagSymStr', '$tagModStr')";
+
+    mysqli_query($conn, $sql);
 
   }
 
@@ -126,6 +121,8 @@
     $sql = "INSERT INTO posts (id, titleText, postText, postId, postTextPhonetic, titleTextPhonetic) VALUES ('$id', '$title', '$description', '$postId', '$titlePhon', '$descPhon')";
 
     mysqli_query($conn, $sql);
+
+    header("Location: ../index.php");
 
     Disconnect($conn);
 

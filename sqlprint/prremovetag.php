@@ -3,6 +3,7 @@
     session_start();
 
     $tag = $_GET['tag'];
+    $dbVal = $_GET['dbVal'];
     $dbName = $_GET['dbName'];
 
     $tagsArray = $_SESSION[$dbName];
@@ -14,7 +15,7 @@
 
     $_SESSION[$dbName] = $tagsArray;
 
-    if ($dbName == '1' || $dbName == '2' || $dbName == '3') {
+    if ($dbVal == '1' || $dbVal == '2' || $dbVal == '3') {
       header("Location: ../postview.php?removedtag");
     }
     else {

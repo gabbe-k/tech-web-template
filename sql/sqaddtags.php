@@ -6,12 +6,27 @@
   //https://www.red-gate.com/simple-talk/blogs/string-comparisons-in-sql-edit-distance-and-the-levenshtein-algorithm/
   //BIG SEARCH ALGORITM
 
+  function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
+
   $conn = Connect();
 
   if (isset($_POST['tagText'])) {
 
     $dbName = "";
     $location = "Location: ../";
+
+    if ($_POST['hidden'] == '1' || $_POST['hidden'] == '2' || $_POST['hidden'] == '3') {
+      $location = $location . "postview.php";
+    }
+    else {
+      $location = $location . "index.php";
+    }
 
     switch ($_POST['hidden']) {
 
@@ -37,18 +52,6 @@
 
       case '6':
         $dbName = "modelPost";
-        break;
-
-      case ($_POST['hidden'] == '1' || $_POST['hidden'] == '2' || $_POST['hidden'] == '3'):
-        $location = $location . "postview.php";
-        break;
-
-      case ($_POST['hidden'] == '4' || $_POST['hidden'] == '5' || $_POST['hidden'] == '6'):
-        $location = $location . "index.php";
-        break;
-
-      default:
-        // code...
         break;
     }
 
