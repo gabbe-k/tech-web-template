@@ -28,13 +28,13 @@
 
           <div class="param-add">
             <div class="tagSearch-Wrapper">
-              <form id="param-add-form" action="../sql/sqaddtags.php" method="post" autocomplete="off">
-                <input type="text" name="tagText" id="paramAdd-Input" placeholder="Search situation tags...">
-                <input type="hidden" name="hidden" value="4">
-              </form>
-              <div id="addParams-Preview">
+                <form id="param-add-form" action="../sql/sqaddtags.php" method="post" autocomplete="off">
+                  <input type="text" name="tagText" id="paramAdd-Input" placeholder="Search situation tags...">
+                  <input type="hidden" name="hidden" value="4">
+                </form>
+                <div id="addParams-Preview">
 
-              </div>
+                </div>
             </div>
           </div>
 

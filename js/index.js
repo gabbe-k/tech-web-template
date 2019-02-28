@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   if (pathname.indexOf('index.php?') > -1){
 
-      $('.header-info-start').fadeOut();
+      $('.header-info-start').fadeOut(0);
 
       $("html, body").animate({ scrollTop: 0 }, "slow").promise().done(function() {
         $.scrollLock(true);
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
       $('#header-exit-button').attr("disabled", "disabled");
       $('.header-info').addClass('header-info-fullsize');
-      $('.header-info-pick-wrapper').fadeOut();
+      $('.header-info-pick-wrapper').fadeOut(0);
       $('.header-info-wrapper').addClass('header-info-fullsize');
       $('.header-info-ask-wrapper').fadeIn(0);
 

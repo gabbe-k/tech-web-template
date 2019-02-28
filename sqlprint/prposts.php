@@ -113,7 +113,9 @@ function PrintPosts() {
 
       $result = mysqli_query($conn, $sql);
 
-      if (!$result) {
+      $resultLen = mysqli_num_rows($result);
+
+      if ($resultLen == 0) {
         echo "<p>No posts were found for these tags</p>";
       }
       else {

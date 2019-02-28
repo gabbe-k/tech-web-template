@@ -122,9 +122,15 @@
 
     mysqli_query($conn, $sql);
 
+    unset($_SESSION['situationPost']);
+    unset($_SESSION['symptomPost']);
+    unset($_SESSION['modelPost']);
+
     header("Location: ../index.php");
 
     Disconnect($conn);
+
+    exit();
 
   }
  ?>

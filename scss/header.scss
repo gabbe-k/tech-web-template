@@ -366,25 +366,23 @@
               grid-row: 1/2;
               width: 100%;
               height: 100%;
+              display: flex;
+              justify-content: flex-end;
 
               #param-add-form {
-
-                height: 1.1rem;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                box-shadow: 0 0.15rem 0 0 rgba(0,0,0,.4);
+                height: 100%;
+                width: 15rem;
 
                 input[type=text], select {
-                  width: 100%;
+                  width: 15rem - 1.125rem;
                   height: 100%;
+                  padding-left: 1.125rem;
                   border: none;
                   background-color: $TextDarker;
                   outline: none;
                   font-size: .75rem;
                   font-weight: 800;
-                  padding-left: 1.125rem;
-                  border-radius: .125rem;
                   background-image: url('/img/round-search-24px.svg');
                   background-position:  0 .1rem;
                   background-size: 1.125rem;
@@ -451,12 +449,12 @@
   display: grid;
   grid-template-columns: 1fr;
   position: fixed;
-  width: 100%;
   height: auto !important;
+  width: 15rem;
   border-radius:  0 0 0.2rem 0.2rem;
 
     form {
-      width: 100%;
+      width: 10rem;
       height: 100%;
       overflow: hidden;
 
@@ -465,7 +463,7 @@
         margin-left: .2rem;
         font-weight: 600;
         font-size: .7rem;
-        width: 100%;
+        width: 15rem;
         height: 2rem;
         border: none;
         background: none;
@@ -546,6 +544,7 @@
         width: 2em;
         transition: transform 0.2s;
         opacity: 1;
+        z-index: 998 !important;
 
         &:focus {
           transform: rotate(90deg);
@@ -597,6 +596,9 @@
     max-height: auto;
     opacity: 0;
     border-radius: 0.2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
 
       #tagSearch-Preview {
         background: $Text;
@@ -611,6 +613,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            z-index: 999;
 
             input { // BUG:
               text-align: left;
@@ -622,6 +625,7 @@
               border: none;
               background: none;
               outline: none;
+              z-index: 999;
             }
 
             &:hover{
