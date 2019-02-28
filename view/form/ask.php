@@ -128,7 +128,7 @@
       ?>
 
       <div class="">
-        <form action="sql/sqpost.php"  id="postForm" method="post">
+        <form action="sql/sqpost.php"  id="postForm" method="post" autocomplete="off">
           <input type="text" name="title" placeholder="Title">
           <textarea name="description" placeholder="Description" rows="8" cols="80"></textarea>
           <input type="submit" id="submitButton" value="Submit">
