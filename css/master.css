@@ -288,7 +288,7 @@ html {
   -webkit-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
   -moz-box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
   box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.33);
-  z-index: 999;
+  z-index: 998;
 }
 .header-inner-wrap .header-nav div {
   display: flex;
@@ -1192,7 +1192,7 @@ html {
   background: #111111;
   height: 40rem;
   padding: 1rem;
-  z-index: 999;
+  z-index: 997;
 }
 
 .main-inner-wrap {
