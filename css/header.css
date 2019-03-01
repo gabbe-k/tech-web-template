@@ -742,9 +742,6 @@ html {
   max-height: auto;
   opacity: 0;
   border-radius: 0.2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
 }
 .tagsection-wrapper .tagSearch-Wrapper #tagSearch-Preview {
   background: #EDEDED;

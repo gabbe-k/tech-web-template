@@ -24,9 +24,10 @@
     $tagMeta = metaphone($tag, 5);
 
     $sql = "SELECT tagText FROM tags WHERE tagType = '$db'
-    AND (tagTextPhonetic = '$tagMeta' OR tagTextPhonetic LIKE '$tagMeta%'
-    OR tagTextPhonetic LIKE '%$tagMeta'
-    OR tagText LIKE '%$tag%' OR '%$tag' OR '$tag%')";
+    AND (tagTextPhonetic = '$tagMeta'
+    OR tagText LIKE '%$tag%' OR '%$tag' OR '$tag%'
+    OR tagTextPhonetic LIKE '$tagMeta%'
+    OR tagTextPhonetic LIKE '%$tagMeta')";
     $result = mysqli_query($conn, $sql);
     $resultLen = mysqli_num_rows($result);
 

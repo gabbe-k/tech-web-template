@@ -6,6 +6,10 @@
 
   <div class="header-info-ask">
 
+    <?php
+      if (isset($_SESSION['u_id'])) {
+    ?>
+
     <div class="addParams-wrapper">
 
       <div class="param-instructions">
@@ -123,9 +127,7 @@
         </div>
       </div>
 
-      <?php
-        if (isset($_SESSION['u_id'])) {
-      ?>
+
 
       <div class="">
         <form action="sql/sqpost.php"  id="postForm" method="post" autocomplete="off">
@@ -135,6 +137,8 @@
         </form>
       </div>
 
+    </div>
+    
       <?php
         }
         else {
@@ -143,9 +147,6 @@
           <?php
         }
       ?>
-
-    </div>
-
 
   </div>
 
