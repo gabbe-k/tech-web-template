@@ -1,5 +1,74 @@
 <?php
 include('./sql/sqconnect.php');
+require_once('./sql/data_valid.php');
+
+function GeneratePosts() {
+
+  $conn = Connect();
+
+  for ($j=0; $j < 6000; $j++) {
+
+    $SitArr = array();
+    $rndSitAmnt = rand(1, 3);
+
+    $SymArr = array();
+    $rndSymAmnt = rand(1, 3);
+
+    $ModArr = array();
+    $rndModAmnt = rand(1, 3);
+
+    for ($i=0; $i < $rndSitAmnt; $i++) {
+      $rndSit = rand(1, 9);
+
+      if (array_search($rndSit, $SitArr) == false) {
+        $SitArr[] = $rndSit;
+      }
+
+    }
+
+    for ($i=0; $i < $rndSymAmnt; $i++) {
+      $rndSym = rand(10, 16);
+
+      if (array_search($rndSym, $SymArr) == false) {
+        $SymArr[] = $rndSym;
+      }
+
+    }
+
+    for ($i=0; $i < $rndModAmnt; $i++) {
+
+      $rndMod = rand(17, 24);
+
+      if (array_search($rndMod, $ModArr) == false) {
+        $ModArr[] = $rndMod;
+      }
+
+    }
+
+    $sitStr = implode(',', $SitArr);
+    $SymStr = implode(',', $SymArr);
+    $ModStr = implode(',', $ModArr);
+
+    $postId = DupeSearch($conn, "posttag", "postId");
+    $AccId = DupeSearch($conn, "accounts", "Id");
+
+    $sql = "INSERT INTO `posttag`(`postId`, `situationTagId`, `modelTagId`, `symptomTagId`) VALUES ('$postId','$sitStr','$SymStr','$ModStr')";
+
+    $sql2 = "INSERT INTO `accounts`(`id`) VALUES ('$AccId')";
+
+    $title = 'Sit: ' . $sitStr . ' ' . 'Sym: ' . $SymStr . ' ' . 'Mod:' . $ModStr;
+
+    $sql3 = "INSERT INTO `posts`(`id`, `postId`, `postText`, `titleText`) VALUES ('$AccId','$postId','$title','Description')";
+
+    mysqli_query($conn, $sql);
+    mysqli_query($conn, $sql2);
+    mysqli_query($conn, $sql3);
+
+  }
+
+  Disconnect($conn);
+
+}
 
 
 function TagsToMetaPhone() {
@@ -7,6 +76,7 @@ function TagsToMetaPhone() {
   $conn = Connect();
 
   $conn->query("INSERT INTO tags(tagid, tagText, tagType) VALUES ('0001','after update', '1')");
+  $conn->query("INSERT INTO tags(tagid, tagText, tagType) VALUES ('0002','after reboot', '1')");
   $conn->query("INSERT INTO tags(tagid, tagText, tagType) VALUES ('0003','changed graphics', '1')");
   $conn->query("INSERT INTO tags(tagid, tagText, tagType) VALUES ('0004','after october update', '1')");
   $conn->query("INSERT INTO tags(tagid, tagText, tagType) VALUES ('0005','blue screen 20405', '1')");

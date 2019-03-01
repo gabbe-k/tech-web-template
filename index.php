@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
-    //include('convertAllPhonetic.php');
+    include('convertAllPhonetic.php');
     session_start();
     //TagsToMetaPhone();
+    //GeneratePosts();
     require_once('sqlprint/prtags.php');
  ?>
 <html lang="en" dir="ltr">

@@ -109,7 +109,7 @@ function PrintPosts() {
         )  DESC
       ";
 
-      $sql = "SELECT accounts.username, posts.id, posts.titleText, posts.postText, posts.postId FROM accounts, posts WHERE posts.postId IN($sqlPostIdAlt) AND posts.id = accounts.id";
+      $sql = "SELECT accounts.username, posts.id, posts.titleText, posts.postText, posts.postId FROM accounts, posts WHERE posts.postId IN($sqlPostIdAlt) AND accounts.id = posts.id";
 
       $result = mysqli_query($conn, $sql);
 
@@ -122,8 +122,16 @@ function PrintPosts() {
 
         $resultLen = mysqli_num_rows($result);
 
-        for ($i=0; $i < $resultLen; $i++) {
+        if ($resultLen < 5) {
+          $max = $resultLen;
+        }
+        else {
+          $max = $resultLen;;
+        }
+
+        for ($i=0; $i < $max; $i++) {
           $row = mysqli_fetch_assoc($result);
+
           ?>
              <div class="post">
                <div class="title">

@@ -43,35 +43,6 @@ CREATE TABLE tags(
 		tagType int(10)
 );
 
-INSERT INTO accounts(id, email, username, password) VALUES ('0387','0587','PERSON1', 'PERSON1');
-
-INSERT INTO accounts(id, email, username, password) VALUES ('8957','8257','PERSON2', 'PERSON2');
-
-INSERT INTO accounts(id, email, username, password) VALUES ('4256','4556','PERSON3', 'PERSON3');
-
-INSERT INTO accounts(id, email, username, password) VALUES ('1225','1125','PERSON4', 'PERSON4');
-
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('0387','0587','Katter är fina :)', 'one');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('8957','8257','360 no scope!!! 1337!', 'one two');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('4256','4556','Pasta är gott', 'one two three');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('8957','4256','Kan någon swisha mig?!?! Behöver pengar till nya WOW DLC:n!!! ', 'four five');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('0387','0487','Kanelbullar är mina favorit bullar', 'three');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('1225','1125','Hur loggar man ut?', 'five six');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('8957','8457','Minecraft är för n00bs!', 'five one');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('4256','4558','Jag gillar inte fisk, det smakar bara vatten', 'seven');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('8957','8967','12.57 i K/D på CoD4!!!', 'six');
-
-INSERT INTO posts(id, postID, postText, titleText) VALUES ('4256','4446','Nu är jag magsjuk', 'one six seven');
-
 /*INSERT INTO posttag(postID, tagId) VALUES ('0587','0001');
 
 INSERT INTO posttag(postID, tagId) VALUES ('8257','0001');

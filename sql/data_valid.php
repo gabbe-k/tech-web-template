@@ -30,8 +30,6 @@
       $sqlComm = "SELECT '$item' FROM '$database' WHERE '$database'.'$item' = '$idVal'";
       $result = mysqli_query($conn, $sqlComm);
 
-      var_dump($result);
-
       if (!$result) {
         $dupe = false;
       }
