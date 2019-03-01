@@ -1,7 +1,7 @@
 <div class="main-wrap">
   <div class="">
-    <h3>Hello, like video, sub, enjoy?</h3>
-    <h5>I like video, he subscribe to me eee</h5>
+    <h3>Hello, this is an introduction.</h3>
+    <h5>Why are you reading this irrelevant text?</h5>
     <br>
     <br>
   </div>
@@ -14,21 +14,21 @@
     </div>
     <div class="postlist-left">
       <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
+        <h4>Very hard problem</h4>
       </div>
       <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
+        <h4>Unsolved mystery #1</h4>
       </div>
       <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
+        <h4>I lit my pc on fire</h4>
       </div>
     </div>
     <div class="postlist-center">
       <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
+        <h4>Sorry guys i solved it actually</h4>
       </div>
       <div class="postlink">
-        <h4>woah gammers just got this message...</h4>
+        <h4>Minor issue that i will solve in 5 minutes</h4>
       </div>
     </div>
   </div>
