@@ -25,35 +25,35 @@
 
       <div class="postview-main-outer-wrap">
 
-        <div class="description-adder">
-
-          <div class="description-post-wrapper">
-
-            <div class="writepost-instructions">
-              <div class="">
-                <h1>Add a description</h1>
-                <h6>Write a detailed description about this problem, and try to sum the problem up in a few words in the title.</h6>
-              </div>
-            </div>
-
-
-
-            <div class="">
-              <form action="sql/sqdesc.php"  id="postForm" method="post" autocomplete="off">
-                <input type="text" name="title" placeholder="Title">
-                <textarea name="description" placeholder="Description" rows="8" cols="80"></textarea>
-                <input type="submit" id="submitButton" value="Submit">
-              </form>
-            </div>
-
-          </div>
-
-        </div>
-
           <?php
             if (isset($_SESSION['situationText']) && isset($_SESSION['symptomText']) && isset($_SESSION['modelText'])
               && count($_SESSION['situationText']) > 0 && count($_SESSION['symptomText']) > 0 && count($_SESSION['modelText']) > 0 ) {
            ?>
+
+       <div class="description-adder">
+
+         <div class="description-post-wrapper">
+
+           <div class="writepost-instructions">
+             <div class="">
+               <h1>Add a description</h1>
+               <h6>Write a detailed description about this problem, and try to sum the problem up in a few words in the title.</h6>
+             </div>
+           </div>
+
+
+
+           <div class="">
+             <form action="sql/sqdesc.php"  id="postForm" method="post" autocomplete="off">
+               <input type="text" name="title" placeholder="Title">
+               <textarea name="description" placeholder="Description" rows="8" cols="80"></textarea>
+               <input type="submit" id="submitButton" value="Submit">
+             </form>
+           </div>
+
+         </div>
+
+       </div>
 
         <div class="postViewer-addDescription">
 
@@ -90,7 +90,15 @@
           else {
          ?>
 
-         <p>Please select values for all parameters</p>
+         <div class="err-div">
+            <p>Please select values for all parameters</p>
+         </div>
+
+         <div class="postViewer">
+
+         </div>
+
+
 
          <?php
          }

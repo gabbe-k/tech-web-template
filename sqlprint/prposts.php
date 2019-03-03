@@ -9,18 +9,15 @@ function PrintPosts() {
     $conn = Connect();
 
     $result = GetPostRes();
-    $resultLen = mysqli_num_rows($result);
 
     $resultDesc = GetDescRes();
-    $resultDescLen = mysqli_num_rows($resultDesc);
+    $resultLen = mysqli_num_rows($result);
 
 
     if ($resultLen == 0) {
       echo "<p>No posts were found for these tags</p>";
     }
     else {
-
-      $resultLen = mysqli_num_rows($result);
 
       if ($resultLen < 10) {
         $max = $resultLen;
@@ -30,8 +27,11 @@ function PrintPosts() {
       }
 
       $descCount = 0;
-      if ($resultDescLen == 0) {
+      if ($resultDesc == false) {
         echo "<p>No descriptions were found for these tags</p>";
+      }
+      else {
+        $resultDescLen = mysqli_num_rows($resultDesc);
       }
 
       for ($i=0; $i < $max; $i++) {

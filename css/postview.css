@@ -127,6 +127,10 @@ html {
   grid-template-rows: minmax(0.15fr 1fr);
 }
 
+.err-div {
+  padding: 1rem;
+}
+
 .postViewer-addDescription {
   background: none;
   width: 100%;
