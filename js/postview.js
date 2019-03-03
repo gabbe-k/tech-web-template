@@ -97,4 +97,32 @@ $(document).ready(function() {
         }
     });
 
+
+
+
+    $('#desc-btn').click(function(event) {
+
+      $('.description-adder').on('transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd', function(event) {
+        $('.description-adder').removeClass('animatable--now');
+      });
+
+      if ($('.description-adder').hasClass('description-adder-fullsize')) {
+
+        $('.description-adder').addClass('animatable--now');
+        $('.description-adder').removeClass('description-adder-fullsize');
+        $('.desc-text-wrap').fadeIn(50);
+        $('#desc-btn').removeClass('desc-btn-180');
+
+      }
+      else {
+
+        $('.description-adder').addClass('animatable--now');
+        $('.description-adder').addClass('description-adder-fullsize');
+        $('.desc-text-wrap').fadeOut(50);
+        $('#desc-btn').addClass('desc-btn-180');
+
+      }
+
+    });
+
 });

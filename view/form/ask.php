@@ -121,7 +121,6 @@
       <div class="writepost-instructions">
         <div class="">
           <h1>Open a request</h1>
-
           <h6>Write a detailed description about your problem, and try to sum the problem up in a few words in the title.</h6>
           <h6>After you're done with that, we'll go on to adding tags to the post.</h6>
         </div>
@@ -138,7 +137,7 @@
       </div>
 
     </div>
-    
+
       <?php
         }
         else {

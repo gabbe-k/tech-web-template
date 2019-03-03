@@ -1,85 +1,4 @@
 <?php
-
-  function InsertTag($tagArrArr, $conn, $string, $postId) {
-
-    $tagSit = array();
-    $tagSym = array();
-    $tagMod = array();
-
-      for ($j=0; $j < 3; $j++) {
-
-        for ($i=0; $i < count($tagArrArr[$j]); $i++) {
-
-          $tag= $tagArrArr[$j][$i];
-
-          $result = mysqli_query($conn, "SELECT * FROM tags WHERE tagTextPhonetic='$tag'");
-
-          $resultLen = mysqli_num_rows($result);
-
-          if ($resultLen == 0) {
-
-            $tagId = DupeSearch($conn, "tags", "tagId");
-
-            switch ($j + 1) {
-              case '1':
-                $tagSit[] = $tagId;
-                break;
-
-              case '2':
-                $tagSym[] = $tagId;
-                break;
-
-              case '3':
-                $tagMod[] = $tagId;
-                break;
-            }
-
-            $tagPhonetic = metaphone($tagArrArr[$j][$i]);
-            $tagType = $j + 1;
-
-            echo $tagArrArr[$j][$i];
-
-            $conn->query("INSERT INTO tags (tagId, tagText, tagTextPhonetic, tagType) VALUES ('$tagId', '$tagArrArr[$j][$i]', $tagPhonetic, $tagType)");
-
-          }
-          else {
-            $row = mysqli_fetch_assoc($result);
-
-            switch ($j + 1) {
-              case '1':
-                $tagSit[] = $row['tagId'];
-                break;
-
-              case '2':
-                $tagSym[] = $row['tagId'];
-                break;
-
-              case '3':
-                $tagMod[] = $row['tagId'];
-                break;
-
-            }
-
-          }
-
-        }
-
-      }
-
-    $tagSitStr = implode(',' , $tagSit);
-    $tagSymStr = implode(',' , $tagSym);
-    $tagModStr = implode(',' , $tagMod);
-
-    $sql = "INSERT INTO posttag (postId, situationTagId, symptomTagId, modelTagId) VALUES ('$postId', '$tagSitStr', '$tagSymStr', '$tagModStr')";
-
-    mysqli_query($conn, $sql);
-
-  }
-
-
-
-
-
   require_once('sqconnect.php');
   require_once('data_valid.php');
 
@@ -113,7 +32,7 @@
 
     $postId = DupeSearch($conn, "posts", "postId");
 
-    InsertTag($tagArrArr, $conn, "situationTagId", $postId);
+    PushPostTag($tagArrArr, $conn, $postId, "posttag");
 
     $titlePhon = metaphone($title);
     $descPhon = metaphone($description);

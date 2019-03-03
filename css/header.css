@@ -92,6 +92,10 @@ html {
   transition: all 200ms ease-out;
 }
 
+.animatable--now.description-adder {
+  transition: all 400ms ease-out;
+}
+
 .animatable--now.header-info,
 .animatable--now.header-info-pick-wrapper {
   transition: all 500ms ease-out;
@@ -437,6 +441,9 @@ html {
   resize: none;
   margin: 0.125rem 0;
   outline: none;
+}
+.header-info-ask-wrapper .header-info-ask-outer .header-info-ask .writepost-wrapper #postForm {
+  height: 10rem;
 }
 .header-info-ask-wrapper .header-info-ask-outer .header-info-ask .addParams-wrapper {
   width: 100%;
